@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Projecte_UF1</string>
+    <string-array name="users">
+    </string-array>
 </resources>
