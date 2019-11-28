@@ -5,23 +5,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    String userSelected;
     Spinner users;
     EditText password;
     EditText newUser;
     EditText newPass;
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
+    ArrayList<String> usersList;
+    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +41,45 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
-        Map<String,?> sharedPrefUsers = sharedPref.getAll();
-        List<String> userString = sharedPrefUsers.entrySet().
+        usersList = new ArrayList<String>();
+        spinnerSetup();
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item,items);
+
+
+    }
+
+    public void login(View view) {
+
+
+
+    }
+
+    public void register(View view) {
+
+        editor.putString(newUser.getText().toString(), newPass.getText().toString());
+        editor.apply();
+        usersList.add(newUser.getText().toString());
+        adapter.notifyDataSetChanged();
+
+    }
+
+    public void spinnerSetup(){
+
+        Map<String,?> sharedPrefUsers = sharedPref.getAll();
+
+        for (Map.Entry<String, ?> entry : sharedPrefUsers.entrySet()) {
+            if(entry.getKey() != null){
+                usersList.add(entry.getKey());
+                // Log.e("xd", "xd"+entry.getKey());
+            }
+        }
+
+        adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item,usersList);
+        // clear empties list, addAll adds a whole arraylist and notify refreshes the data
+        // adapter.clear();
+        // adapter.addAll(usersList);
+        // adapter.notifyDataSetChanged();
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         users.setAdapter(adapter);
@@ -58,11 +97,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    public void login(View view) {
-
-
 
     }
 }
