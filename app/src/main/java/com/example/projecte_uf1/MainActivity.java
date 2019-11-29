@@ -58,12 +58,14 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == GAME_START && resultCode == RESULT_CANCELED) {
 
-        } else{
-            editor.remove(data.getStringExtra());
+            editor.remove(userSelected);
             editor.apply();
 
-            usersList.add(newUser.getText().toString());
+            usersList.remove(newUser.getText().toString());
             adapter.notifyDataSetChanged();
+
+        } else{
+
         }
     }
 
