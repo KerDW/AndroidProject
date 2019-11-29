@@ -3,6 +3,7 @@ package com.example.projecte_uf1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,7 +54,13 @@ public class MainActivity extends AppCompatActivity {
     public void login(View view) {
 
         if(password.getText().toString().equals(sharedPref.getString(userSelected, ""))){
-
+            Intent intent = new Intent(this, SecondActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(
+            getApplicationContext(),
+            "Wrong password.",
+            Toast.LENGTH_LONG).show();
         }
     }
 
