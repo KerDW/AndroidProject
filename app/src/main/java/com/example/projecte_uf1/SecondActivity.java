@@ -6,10 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SecondActivity extends AppCompatActivity {
 
     TextView timerTV;
+    CountDownTimer cdn;
+    int countDownPeriod = 5000;
+    int countDownInterval = 1000;
 
 
     @Override
@@ -19,7 +23,11 @@ public class SecondActivity extends AppCompatActivity {
 
         timerTV = findViewById(R.id.timerTV);
 
-        new CountDownTimer(5000, 1000) {
+        createTimer();
+    }
+
+    public void createTimer(){
+        cdn = new CountDownTimer(countDownPeriod, countDownInterval) {
 
             public void onTick(long millisUntilFinished) {
                 timerTV.setText("Seconds remaining: " + millisUntilFinished / 1000);
@@ -27,11 +35,14 @@ public class SecondActivity extends AppCompatActivity {
 
             public void onFinish() {
                 // here we could stop whatever the main thread is doing and throw the user out of the app
-
+                Toast.makeText(
+                getApplicationContext(),
+                "Unfortunately, you ran out of time.",
+                Toast.LENGTH_LONG).show();
+    
                 Intent intent = new Intent(SecondActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         }.start();
-
     }
 }
