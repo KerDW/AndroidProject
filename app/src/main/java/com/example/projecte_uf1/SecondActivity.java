@@ -15,6 +15,8 @@ public class SecondActivity extends AppCompatActivity {
     int countDownPeriod = 5000;
     int countDownInterval = 1000;
 
+    Intent intent;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +24,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         timerTV = findViewById(R.id.timerTV);
+        intent = getIntent();
 
         createTimer();
     }
@@ -39,9 +42,8 @@ public class SecondActivity extends AppCompatActivity {
                 getApplicationContext(),
                 "Unfortunately, you ran out of time.",
                 Toast.LENGTH_LONG).show();
-    
-                Intent intent = new Intent(SecondActivity.this, MainActivity.class);
-                startActivity(intent);
+
+                setResult(RESULT_CANCELED, intent);
             }
         }.start();
     }
