@@ -28,7 +28,7 @@ public class SecondActivity extends AppCompatActivity {
             public void onFinish() {
                 // here we could stop whatever the main thread is doing and throw the user out of the app
 
-                // Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(SecondActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         }.start();
