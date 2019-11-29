@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
     ArrayList<String> usersList;
+    ArrayList<String> passwordList;
     ArrayAdapter<String> adapter;
 
     @Override
@@ -50,14 +52,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void login(View view) {
 
+        if(password.getText().toString().equals(sharedPref.getString(userSelected, ""))){
 
-
+        }
     }
 
     public void register(View view) {
 
+        if(usersList.contains(newUser.getText().toString())){
+
+            Toast.makeText(
+            getApplicationContext(),
+            "This username already taken, choose a different one, please.",
+            Toast.LENGTH_LONG).show();
+
+            return;
+        }
+
         editor.putString(newUser.getText().toString(), newPass.getText().toString());
         editor.apply();
+
         usersList.add(newUser.getText().toString());
         adapter.notifyDataSetChanged();
 
