@@ -28,15 +28,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/fragmentHolder"
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.projecte_uf1.GuessingPanel"
         android:layout_width="264dp"
-        android:layout_height="119dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.04"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="128dp"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="3dp" />
 
-    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +14,8 @@ public class SecondActivity extends AppCompatActivity {
     TextView timerTV;
     CountDownTimer cdn;
     int countDownPeriod = 30000;
+    ProgressBar pb1;
+    ProgressBar pb2;
 
     Intent intent;
 
@@ -24,8 +27,39 @@ public class SecondActivity extends AppCompatActivity {
 
         timerTV = findViewById(R.id.timerTV);
         intent = getIntent();
-
+        progressBarLogic();
         createTimer();
+    }
+
+    public void progressBarLogic(){
+
+        Runnable r = new Runnable() {
+            public void run() {
+
+                pb1 = findViewById(R.id.progressBar);
+                pb2 = findViewById(R.id.progressBar2);
+
+                int pr = 0;
+
+                while (true){
+                    pb1.setProgress(pr);
+                    pb2.setProgress(pr);
+                    pr++;
+                    if(pr == 100){
+                        pr = 0;
+
+                    }
+                    try {
+                        Thread.sleep(30);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        };
+
+        new Thread(r).start();
+
     }
 
     public void createTimer(){
@@ -47,4 +81,6 @@ public class SecondActivity extends AppCompatActivity {
             }
         }.start();
     }
+
+
 }
