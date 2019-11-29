@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> passwordList;
     ArrayAdapter<String> adapter;
 
+    public static final int GAME_START = 1;
+    public static final String USER_NAME = "com.example.android.projecte_uf1.USER_NAME";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,14 +51,30 @@ public class MainActivity extends AppCompatActivity {
         spinnerSetup();
 
 
+    }
 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GAME_START && resultCode == RESULT_CANCELED) {
+
+            editor.remove(userSelected);
+            editor.apply();
+
+            usersList.remove(newUser.getText().toString());
+            adapter.notifyDataSetChanged();
+
+        } else{
+
+        }
     }
 
     public void login(View view) {
 
         if(password.getText().toString().equals(sharedPref.getString(userSelected, ""))){
             Intent intent = new Intent(this, SecondActivity.class);
-            startActivity(intent);
+            intent.putExtra(USER_NAME, userSelected);
+            startActivityForResult(intent, GAME_START);
         } else {
             Toast.makeText(
             getApplicationContext(),
