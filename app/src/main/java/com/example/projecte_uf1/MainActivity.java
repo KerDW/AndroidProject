@@ -98,6 +98,11 @@ public class MainActivity extends AppCompatActivity {
         editor.putString(newUser.getText().toString(), newPass.getText().toString());
         editor.apply();
 
+        Toast.makeText(
+        getApplicationContext(),
+        "User created.",
+        Toast.LENGTH_LONG).show();
+
         usersList.add(newUser.getText().toString());
         adapter.notifyDataSetChanged();
 

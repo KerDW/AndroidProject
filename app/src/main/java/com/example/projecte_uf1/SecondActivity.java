@@ -174,7 +174,10 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        // user can't back
+        Toast.makeText(
+        getApplicationContext(),
+        "There is no escape.",
+        Toast.LENGTH_LONG).show();
     }
 
     public void checkInput() {
