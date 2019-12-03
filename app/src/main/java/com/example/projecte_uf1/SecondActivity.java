@@ -5,17 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Random;
 
 public class SecondActivity extends AppCompatActivity {
 
     TextView timerTV;
     CountDownTimer cdn;
     int countDownPeriod = 30000;
-    ProgressBar pb1;
-    ProgressBar pb2;
+
+    ProgressBar pb;
+    EditText inputText;
+    TextView textShown;
 
     Intent intent;
 
@@ -26,9 +32,28 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         timerTV = findViewById(R.id.timerTV);
+        inputText = findViewById(R.id.userInput);
+        textShown = findViewById(R.id.textShown);
+
         intent = getIntent();
+
+        generateRandomChars(5);
         progressBarLogic();
         createTimer();
+    }
+
+    public void generateRandomChars(int letterNo){
+
+        Random rand = new Random();
+        String randomChars = "";
+
+        String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvxyz";
+
+        for (int i = 0;i < letterNo; i++){
+            randomChars += letters.charAt(rand.nextInt(51));
+        }
+
+        textShown.setText(randomChars);
     }
 
     public void progressBarLogic(){
@@ -36,18 +61,16 @@ public class SecondActivity extends AppCompatActivity {
         Runnable r = new Runnable() {
             public void run() {
 
-                pb1 = findViewById(R.id.progressBar);
-                pb2 = findViewById(R.id.progressBar2);
+                pb = findViewById(R.id.progressBar);
 
                 int pr = 0;
 
                 while (true){
-                    pb1.setProgress(pr);
-                    pb2.setProgress(pr);
+                    pb.setProgress(pr);
                     pr++;
-                    if(pr == 100){
+                    if(pr == 200){
                         pr = 0;
-
+                        generateRandomChars(5);
                     }
                     try {
                         Thread.sleep(30);
@@ -83,4 +106,14 @@ public class SecondActivity extends AppCompatActivity {
     }
 
 
+    public void checkInput(View view) {
+
+        String inputString = inputText.getText().toString();
+        String generatedString = textShown.getText().toString();
+
+        if(inputString.equals(generatedString)){
+
+        }
+
+    }
 }
