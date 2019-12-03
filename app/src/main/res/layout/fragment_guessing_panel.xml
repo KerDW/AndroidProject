@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/textShown"
-        android:layout_width="273dp"
+        android:layout_width="216dp"
         android:layout_height="45dp"
         android:text=""
         android:textSize="20dp"
@@ -33,10 +33,18 @@
         android:layout_width="271dp"
         android:layout_height="60dp"
         android:text=""
-        android:onClick="checkInput"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="OnClick" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/marks"
+        android:layout_width="57dp"
+        android:layout_height="45dp"
+        android:text="0/5"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textShown"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

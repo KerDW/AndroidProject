@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -20,8 +22,12 @@ public class SecondActivity extends AppCompatActivity {
     int countDownPeriod = 30000;
 
     ProgressBar pb;
+    int progress = 0;
+
     EditText inputText;
     TextView textShown;
+    TextView marks;
+    int markCount = 0;
 
     Intent intent;
 
@@ -34,12 +40,30 @@ public class SecondActivity extends AppCompatActivity {
         timerTV = findViewById(R.id.timerTV);
         inputText = findViewById(R.id.userInput);
         textShown = findViewById(R.id.textShown);
+        marks = findViewById(R.id.marks);
 
         intent = getIntent();
 
         generateRandomChars(5);
         progressBarLogic();
         createTimer();
+
+        inputText.addTextChangedListener(new TextWatcher() {
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                checkInput();
+
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     public void generateRandomChars(int letterNo){
@@ -63,14 +87,15 @@ public class SecondActivity extends AppCompatActivity {
 
                 pb = findViewById(R.id.progressBar);
 
-                int pr = 0;
-
                 while (true){
-                    pb.setProgress(pr);
-                    pr++;
-                    if(pr == 200){
-                        pr = 0;
+                    pb.setProgress(progress);
+                    progress++;
+                    if(progress == 200){
+                        progress = 0;
                         generateRandomChars(5);
+
+                        // text reset, remove previous user input
+                        inputText.setText("");
                     }
                     try {
                         Thread.sleep(30);
@@ -93,11 +118,13 @@ public class SecondActivity extends AppCompatActivity {
             }
 
             public void onFinish() {
-                // here we could stop whatever the main thread is doing and throw the user out of the app
                 Toast.makeText(
                 getApplicationContext(),
                 "You ran out of time.",
                 Toast.LENGTH_LONG).show();
+
+                // variable resetting
+                markCount = 0;
 
                 setResult(RESULT_CANCELED, intent);
                 finish();
@@ -106,13 +133,25 @@ public class SecondActivity extends AppCompatActivity {
     }
 
 
-    public void checkInput(View view) {
+    public void checkInput() {
+
+        if(markCount == 5){
+            // next activity or thing
+        }
 
         String inputString = inputText.getText().toString();
         String generatedString = textShown.getText().toString();
+        String marksString = marks.getText().toString();
+
 
         if(inputString.equals(generatedString)){
+            markCount++;
 
+            generateRandomChars(5);
+            marks.setText(markCount+marksString.substring(1));
+
+            progress = 0;
+            inputText.setText("");
         }
 
     }
