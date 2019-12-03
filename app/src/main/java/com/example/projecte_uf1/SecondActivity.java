@@ -9,9 +9,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.util.Random;
 
@@ -24,6 +27,7 @@ public class SecondActivity extends AppCompatActivity {
     ProgressBar pb;
     int progress = 0;
 
+    ImageView megamanGif;
     EditText inputText;
     TextView textShown;
     TextView marks;
@@ -37,12 +41,19 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
+        megamanGif = findViewById(R.id.megaman);
         timerTV = findViewById(R.id.timerTV);
         inputText = findViewById(R.id.userInput);
         textShown = findViewById(R.id.textShown);
         marks = findViewById(R.id.marks);
 
         intent = getIntent();
+
+        Glide
+                .with(this) // replace with 'this' if it's in activity
+                .load("http://www.google.com/.../image.gif")
+                .asGif()
+                .into(R.id.megaman);
 
         generateRandomChars(5);
         progressBarLogic();
@@ -52,7 +63,9 @@ public class SecondActivity extends AppCompatActivity {
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                checkInput();
+                // only check if the strings got the same length otherwise it's pointless
+                if(inputText.getText().toString().length() == textShown.getText().toString().length())
+                    checkInput();
 
             }
 
