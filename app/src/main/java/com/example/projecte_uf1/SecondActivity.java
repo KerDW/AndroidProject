@@ -27,12 +27,13 @@ public class SecondActivity extends AppCompatActivity {
     int countDownPeriod = 30000;
 
     ProgressBar pb;
-    int progress = 0;
+    int progress = 100;
 
     ImageView megamanGif;
     EditText inputText;
     TextView textShown;
     TextView marks;
+    TextView prog;
     int markCount = 0;
 
     Intent intent;
@@ -48,6 +49,7 @@ public class SecondActivity extends AppCompatActivity {
         inputText = findViewById(R.id.userInput);
         textShown = findViewById(R.id.textShown);
         marks = findViewById(R.id.marks);
+        prog = findViewById(R.id.prog);
 
         intent = getIntent();
 
@@ -105,13 +107,34 @@ public class SecondActivity extends AppCompatActivity {
 
                 while (true){
                     pb.setProgress(progress);
-                    progress++;
-                    if(progress == 100){
-                        progress = 0;
-                        generateRandomChars(5);
+                    progress--;
 
-                        // text reset, remove previous user input
-                        inputText.setText("");
+                    // view updates must run on the UI thread
+                    runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+
+                            prog.setText(String.valueOf(progress));
+
+                        }
+                    });
+
+                    if(progress <= 0){
+                        progress = 100;
+
+                        // text reset,string generation and remove previous user input
+                        // same as before, UI thread
+                        runOnUiThread(new Runnable() {
+
+                            @Override
+                            public void run() {
+
+                                generateRandomChars(5);
+                                inputText.setText("");
+
+                            }
+                        });
                     }
                     try {
                         Thread.sleep(30);
@@ -148,10 +171,17 @@ public class SecondActivity extends AppCompatActivity {
         }.start();
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        // user can't back
+    }
+
     public void checkInput() {
 
         if(markCount == 5){
 
+            cdn.cancel();
             // next activity or thing
 
         } else {
