@@ -51,10 +51,6 @@ public class SecondActivity extends AppCompatActivity {
 
         intent = getIntent();
 
-        Glide.with(this)
-                .load("https://gifimage.net/wp-content/uploads/2017/10/megaman-running-gif-1.gif")
-                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
-                .into(megamanGif);
 
         generateRandomChars(5);
         progressBarLogic();
@@ -78,6 +74,12 @@ public class SecondActivity extends AppCompatActivity {
 
             }
         });
+
+
+        Glide.with(this)
+                .load("https://gifimage.net/wp-content/uploads/2017/10/megaman-running-gif-1.gif")
+                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+                .into(megamanGif);
     }
 
     public void generateRandomChars(int letterNo){
@@ -145,7 +147,6 @@ public class SecondActivity extends AppCompatActivity {
             }
         }.start();
     }
-
 
     public void checkInput() {
 
