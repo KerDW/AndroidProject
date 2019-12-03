@@ -136,23 +136,24 @@ public class SecondActivity extends AppCompatActivity {
     public void checkInput() {
 
         if(markCount == 5){
+
             // next activity or thing
+
+        } else {
+            String inputString = inputText.getText().toString();
+            String generatedString = textShown.getText().toString();
+            String marksString = marks.getText().toString();
+
+
+            if (inputString.equals(generatedString)) {
+                markCount++;
+
+                generateRandomChars(5);
+                marks.setText(markCount + marksString.substring(1));
+
+                progress = 0;
+                inputText.setText("");
+            }
         }
-
-        String inputString = inputText.getText().toString();
-        String generatedString = textShown.getText().toString();
-        String marksString = marks.getText().toString();
-
-
-        if(inputString.equals(generatedString)){
-            markCount++;
-
-            generateRandomChars(5);
-            marks.setText(markCount+marksString.substring(1));
-
-            progress = 0;
-            inputText.setText("");
-        }
-
     }
 }
