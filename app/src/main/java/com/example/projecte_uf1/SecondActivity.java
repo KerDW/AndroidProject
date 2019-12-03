@@ -9,9 +9,14 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.Random;
 
@@ -24,6 +29,7 @@ public class SecondActivity extends AppCompatActivity {
     ProgressBar pb;
     int progress = 0;
 
+    ImageView megamanGif;
     EditText inputText;
     TextView textShown;
     TextView marks;
@@ -37,12 +43,18 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
 
+        megamanGif = findViewById(R.id.megaman);
         timerTV = findViewById(R.id.timerTV);
         inputText = findViewById(R.id.userInput);
         textShown = findViewById(R.id.textShown);
         marks = findViewById(R.id.marks);
 
         intent = getIntent();
+
+        Glide.with(this)
+                .load("https://gifimage.net/wp-content/uploads/2017/10/megaman-running-gif-1.gif")
+                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+                .into(megamanGif);
 
         generateRandomChars(5);
         progressBarLogic();
@@ -52,7 +64,9 @@ public class SecondActivity extends AppCompatActivity {
 
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                checkInput();
+                // only check if the strings got the same length otherwise it's pointless
+                if(inputText.getText().toString().length() == textShown.getText().toString().length())
+                    checkInput();
 
             }
 
@@ -71,10 +85,10 @@ public class SecondActivity extends AppCompatActivity {
         Random rand = new Random();
         String randomChars = "";
 
-        String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvxyz";
+        String letters = "abcdefghijklmnopqrstuvxyz";
 
         for (int i = 0;i < letterNo; i++){
-            randomChars += letters.charAt(rand.nextInt(51));
+            randomChars += letters.charAt(rand.nextInt(25));
         }
 
         textShown.setText(randomChars);
@@ -90,7 +104,7 @@ public class SecondActivity extends AppCompatActivity {
                 while (true){
                     pb.setProgress(progress);
                     progress++;
-                    if(progress == 200){
+                    if(progress == 100){
                         progress = 0;
                         generateRandomChars(5);
 
