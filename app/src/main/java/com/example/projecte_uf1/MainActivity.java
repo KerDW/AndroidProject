@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<String> adapter;
 
     public static final int GAME_START = 1;
-    public static final String USER_NAME = "com.example.android.projecte_uf1.USER_NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             editor.remove(userSelected);
             editor.apply();
 
-            usersList.remove(newUser.getText().toString());
+            usersList.remove(userSelected);
             adapter.notifyDataSetChanged();
 
         } else{
@@ -73,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
 
         if(password.getText().toString().equals(sharedPref.getString(userSelected, ""))){
             Intent intent = new Intent(this, SecondActivity.class);
-            intent.putExtra(USER_NAME, userSelected);
             startActivityForResult(intent, GAME_START);
         } else {
             Toast.makeText(

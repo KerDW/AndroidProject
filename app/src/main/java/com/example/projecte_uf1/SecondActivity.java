@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -24,7 +23,7 @@ public class SecondActivity extends AppCompatActivity {
 
     TextView timerTV;
     CountDownTimer cdn;
-    int countDownPeriod = 30000;
+    int countDownPeriod = 2000;
 
     ProgressBar pb;
     int progress = 100;
@@ -77,7 +76,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-
+        // load gif, preloading it in the first activity could be nice
         Glide.with(this)
                 .load("https://gifimage.net/wp-content/uploads/2017/10/megaman-running-gif-1.gif")
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
