@@ -36,6 +36,7 @@
         android:layout_width="271dp"
         android:layout_height="60dp"
         android:text=""
+        android:backgroundTint="@color/colorSecondaryLight"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
