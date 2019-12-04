@@ -24,7 +24,6 @@ public class SecondActivity extends AppCompatActivity {
 
     TextView timerTV;
     CountDownTimer cdn;
-    int countDownPeriod = 60000;
     int timeLeft;
 
     ProgressBar pb;
@@ -153,7 +152,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void createTimer(){
-        cdn = new CountDownTimer(countDownPeriod, 1000) {
+        cdn = new CountDownTimer(60000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timeLeft = (int) millisUntilFinished;

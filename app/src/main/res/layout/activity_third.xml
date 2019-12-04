@@ -7,11 +7,34 @@
     tools:context=".ThirdActivity">
 
     <TextView
+        android:id="@+id/timerTV2"
+        android:layout_width="137dp"
+        android:layout_height="64dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/timeLeftInfo"
         android:layout_width="243dp"
         android:layout_height="36dp"
+        android:layout_marginTop="64dp"
         android:text="Your time left: {seconds}"
         android:textSize="20dp"
-        tools:layout_editor_absoluteX="75dp"
-        tools:layout_editor_absoluteY="102dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:layout_width="409dp"
+        android:layout_height="629dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

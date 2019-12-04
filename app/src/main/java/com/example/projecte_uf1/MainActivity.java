@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
     ArrayList<String> usersList;
-    ArrayList<String> passwordList;
     ArrayAdapter<String> adapter;
 
     public static final int GAME_START = 1;
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         usersList = new ArrayList<String>();
         spinnerSetup();
 
-        // preload megaman gif for the second activity so there's no delay
+        // preload megaman gif for the second activity so there's no delay later
         Glide.with(this)
                 .load("https://gifimage.net/wp-content/uploads/2017/10/megaman-running-gif-1.gif")
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
