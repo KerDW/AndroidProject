@@ -47,7 +47,8 @@ public class ThirdActivity extends AppCompatActivity {
                         "You ran out of time.",
                         Toast.LENGTH_LONG).show();
 
-                startActivity(new Intent(ThirdActivity.this, MainActivity.class));
+                setResult(RESULT_CANCELED, intent);
+                finish();
             }
         }.start();
     }

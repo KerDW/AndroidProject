@@ -152,7 +152,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void createTimer(){
-        cdn = new CountDownTimer(60000, 1000) {
+        cdn = new CountDownTimer(3000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timeLeft = (int) millisUntilFinished;
@@ -181,6 +181,19 @@ public class SecondActivity extends AppCompatActivity {
         getApplicationContext(),
         "There is no escape.",
         Toast.LENGTH_LONG).show();
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == GAME_START2 && resultCode == RESULT_CANCELED) {
+
+            setResult(RESULT_CANCELED, intent);
+            finish();
+
+        } else{
+
+        }
     }
 
     public void checkInput() {
