@@ -6,4 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ThirdActivity">
 
+    <TextView
+        android:id="@+id/timeLeftInfo"
+        android:layout_width="243dp"
+        android:layout_height="36dp"
+        android:text="Your time left: {seconds}"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteX="75dp"
+        tools:layout_editor_absoluteY="102dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

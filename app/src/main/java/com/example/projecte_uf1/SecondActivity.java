@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -23,7 +24,8 @@ public class SecondActivity extends AppCompatActivity {
 
     TextView timerTV;
     CountDownTimer cdn;
-    int countDownPeriod = 2000;
+    int countDownPeriod = 60000;
+    int timeLeft;
 
     ProgressBar pb;
     int progress = 100;
@@ -36,6 +38,8 @@ public class SecondActivity extends AppCompatActivity {
     int markCount = 0;
 
     Intent intent;
+
+    public static final int GAME_START2 = 1;
 
 
     @Override
@@ -108,7 +112,7 @@ public class SecondActivity extends AppCompatActivity {
                     pb.setProgress(progress);
                     progress--;
 
-                    // view updates must run on the UI thread
+                    // view updates must run on the UI thread to avoid crashes
                     runOnUiThread(new Runnable() {
 
                         @Override
@@ -122,8 +126,8 @@ public class SecondActivity extends AppCompatActivity {
                     if(progress <= 0){
                         progress = 100;
 
+                        // UI thread
                         // text reset,string generation and remove previous user input
-                        // same as before, UI thread
                         runOnUiThread(new Runnable() {
 
                             @Override
@@ -152,6 +156,7 @@ public class SecondActivity extends AppCompatActivity {
         cdn = new CountDownTimer(countDownPeriod, 1000) {
 
             public void onTick(long millisUntilFinished) {
+                timeLeft = (int) millisUntilFinished;
                 timerTV.setText("Seconds remaining: " + millisUntilFinished / 1000);
             }
 
@@ -181,10 +186,12 @@ public class SecondActivity extends AppCompatActivity {
 
     public void checkInput() {
 
-        if(markCount == 5){
-
+        if(markCount == 0){
             cdn.cancel();
-            // next activity or thing
+
+            Intent intent = new Intent(this, ThirdActivity.class);
+            intent.putExtra("TIME_LEFT", timeLeft);
+            startActivityForResult(intent, GAME_START2);
 
         } else {
             String inputString = inputText.getText().toString();
