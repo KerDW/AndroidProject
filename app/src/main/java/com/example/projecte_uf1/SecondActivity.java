@@ -80,10 +80,10 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        // load gif, preloading it in the first activity could be nice
+        // loading gif instantly since it was preloaded in the first activity
         Glide.with(this)
                 .load("https://gifimage.net/wp-content/uploads/2017/10/megaman-running-gif-1.gif")
-                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.NONE))
+                .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE))
                 .into(megamanGif);
     }
 

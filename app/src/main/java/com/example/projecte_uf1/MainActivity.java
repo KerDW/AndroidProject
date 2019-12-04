@@ -14,6 +14,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -49,7 +53,11 @@ public class MainActivity extends AppCompatActivity {
         usersList = new ArrayList<String>();
         spinnerSetup();
 
-
+        // preload megaman gif for the second activity so there's no delay
+        Glide.with(this)
+                .load("https://gifimage.net/wp-content/uploads/2017/10/megaman-running-gif-1.gif")
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .preload();
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
