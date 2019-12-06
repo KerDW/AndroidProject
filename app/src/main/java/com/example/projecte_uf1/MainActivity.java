@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(
             getApplicationContext(),
-            "This username already taken, choose a different one, please.",
+            "This username is already taken, choose a different one, please.",
             Toast.LENGTH_LONG).show();
 
             return;
