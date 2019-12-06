@@ -19,7 +19,10 @@ public class BestScores extends AppCompatActivity {
 
         RealmQuery<User> query = realm.where(User.class);
 
-        Log.e("xd", "xd"+query.equalTo("name", "x").findFirst().getName());
+        for (User u: query.findAll()) {
+            Log.e("xd", "xd"+u.getNameTime());
+        }
+
 
         // if we go back to the main activity like this the user won't be able to access this activity with the back button
         // this.onBackPressed();

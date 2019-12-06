@@ -57,12 +57,15 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
+
         // Initialize Realm
         Realm.init(this);
-
         // is there a need to set a default realm?
 //      RealmConfiguration config = new RealmConfiguration.Builder().name("myrealm.realm").build();
 //      Realm.setDefaultConfiguration(config);
+
+        // in case I need to reset the db
+//        Realm.deleteRealm(Realm.getDefaultConfiguration());
 
         // Get a Realm instance for this thread
         Realm realm = Realm.getDefaultInstance();

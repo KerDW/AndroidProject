@@ -36,11 +36,11 @@ public class ThirdActivity extends AppCompatActivity {
         timeLeftInfo.setText("You've got " + timeLeft/1000 + " seconds left.");
 
         Realm realm = Realm.getDefaultInstance();
-        realm.beginTransaction();
 
         User user = new User(userName, timeLeft);
 
-        realm.copyToRealm(user);
+        realm.beginTransaction();
+        realm.copyToRealmOrUpdate(user);
         realm.commitTransaction();
 
 //        RealmQuery<User> query = realm.where(User.class);
