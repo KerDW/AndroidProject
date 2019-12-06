@@ -1,12 +1,14 @@
 package com.example.projecte_uf1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,6 +27,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     String userSelected;
+    Toolbar toolbar;
     Spinner users;
     EditText password;
     EditText newUser;
@@ -46,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         newPass = findViewById(R.id.newPass);
         users = findViewById(R.id.userSpinner);
         newUser = findViewById(R.id.newUser);
+        toolbar = findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
 
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
@@ -148,5 +154,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+
+        return true;
     }
 }

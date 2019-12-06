@@ -10,12 +10,11 @@
         android:id="@+id/newUser"
         android:layout_width="145dp"
         android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:text=""
+        android:layout_marginTop="140dp"
         android:backgroundTint="@color/colorSecondaryLight"
         android:inputType="text"
+        android:text=""
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.868"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,57 +22,69 @@
         android:id="@+id/register"
         android:layout_width="145dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="508dp"
+        android:layout_marginBottom="392dp"
+        android:backgroundTint="@color/colorSecondary"
         android:onClick="register"
         android:text="Register"
-        android:backgroundTint="@color/colorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.868"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/newPass"
         android:layout_width="145dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="580dp"
+        android:layout_marginBottom="464dp"
+        android:backgroundTint="@color/colorSecondaryLight"
         android:ems="10"
         android:inputType="textPassword"
-        android:backgroundTint="@color/colorSecondaryLight"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.868"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Spinner
+        android:id="@+id/userSpinner"
+        android:layout_width="195dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="432dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="195dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="@color/colorSecondary"
+        android:onClick="login"
+        android:text="Login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="195dp"
         android:layout_height="68dp"
-        android:layout_marginBottom="248dp"
-        android:ems="10"
+        android:layout_marginBottom="144dp"
         android:backgroundTint="@color/colorSecondaryLight"
+        android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="195dp"
-        android:layout_height="68dp"
-        android:layout_marginBottom="152dp"
-        android:onClick="login"
-        android:text="Login"
-        android:backgroundTint="@color/colorSecondary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/userSpinner"
-        android:layout_width="195dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="328dp"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="412dp"
+        android:layout_height="51dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        style="@style/AppTheme"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        app:titleTextColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
