@@ -6,14 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".BestScores">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="362dp"
-        android:layout_height="90dp"
-        android:text="Best scores here"
-        android:textSize="40dp"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="45dp" />
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
