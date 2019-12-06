@@ -9,6 +9,9 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import io.realm.Realm;
+import io.realm.RealmQuery;
+
 public class ThirdActivity extends AppCompatActivity {
 
     Intent intent;
@@ -32,7 +35,17 @@ public class ThirdActivity extends AppCompatActivity {
         timeLeft = intent.getIntExtra("TIME_LEFT", 0);
         timeLeftInfo.setText("You've got " + timeLeft/1000 + " seconds left.");
 
-         Log.e("xd", "xd"+userName);
+        Realm realm = Realm.getDefaultInstance();
+        realm.beginTransaction();
+
+        User user = new User(userName, timeLeft);
+
+        realm.copyToRealm(user);
+        realm.commitTransaction();
+
+//        RealmQuery<User> query = realm.where(User.class);
+//
+//        Log.e("xd", "xd"+query.equalTo("name", userName).findFirst().getName());
 
         createTimer();
 

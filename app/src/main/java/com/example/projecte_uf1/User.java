@@ -14,6 +14,15 @@ public class User extends RealmObject {
     @Ignore
     private int             sessionId;
 
+    public User(String userName, int timeLeft) {
+        this.name = userName;
+        this.time = timeLeft;
+    }
+
+    public User(){
+
+    }
+
 
     public String getName() { return name; }
     public void   setName(String name) { this.name = name; }
