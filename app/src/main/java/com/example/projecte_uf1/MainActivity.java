@@ -25,6 +25,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
 public class MainActivity extends AppCompatActivity {
 
     String userSelected;
@@ -53,6 +56,16 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
+
+        // Initialize Realm
+        Realm.init(this);
+
+        // is there a need to set a default realm?
+//      RealmConfiguration config = new RealmConfiguration.Builder().name("myrealm.realm").build();
+//      Realm.setDefaultConfiguration(config);
+
+        // Get a Realm instance for this thread
+        Realm realm = Realm.getDefaultInstance();
 
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
