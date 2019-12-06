@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ public class ThirdActivity extends AppCompatActivity {
     CountDownTimer cdn;
     TextView timeLeftInfo;
     int timeLeft;
+    String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +28,11 @@ public class ThirdActivity extends AppCompatActivity {
         timerTV = findViewById(R.id.timerTV2);
 
         intent = getIntent();
+        userName = intent.getStringExtra("USER_NAME");
         timeLeft = intent.getIntExtra("TIME_LEFT", 0);
         timeLeftInfo.setText("You've got " + timeLeft/1000 + " seconds left.");
+
+         Log.e("xd", "xd"+userName);
 
         createTimer();
 

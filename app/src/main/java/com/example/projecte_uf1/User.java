@@ -13,7 +13,7 @@ public class User extends RealmObject {
 
     @Ignore
     private int             sessionId;
-    
+
 
     public String getName() { return name; }
     public void   setName(String name) { this.name = name; }

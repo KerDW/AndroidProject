@@ -201,9 +201,10 @@ public class SecondActivity extends AppCompatActivity {
         if(markCount == 0){
             cdn.cancel();
 
-            Intent intent = new Intent(this, ThirdActivity.class);
-            intent.putExtra("TIME_LEFT", timeLeft);
-            startActivityForResult(intent, GAME_START2);
+            Intent intent2 = new Intent(this, ThirdActivity.class);
+            intent2.putExtra("TIME_LEFT", timeLeft);
+            intent2.putExtra("USER_NAME", intent.getStringExtra("USER_NAME"));
+            startActivityForResult(intent2, GAME_START2);
 
         } else {
             String inputString = inputText.getText().toString();

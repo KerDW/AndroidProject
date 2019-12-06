@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(password.getText().toString().equals(sharedPref.getString(userSelected, ""))){
             Intent intent = new Intent(this, SecondActivity.class);
+            intent.putExtra("USER_NAME", userSelected);
             startActivityForResult(intent, GAME_START);
         } else {
             Toast.makeText(
