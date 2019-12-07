@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 import io.realm.Realm;
 import io.realm.RealmQuery;
 
@@ -22,7 +24,17 @@ public class BestScores extends AppCompatActivity {
 
         Realm realm = Realm.getDefaultInstance();
 
-        RealmQuery<User> query = realm.where(User.class);
+        RealmQuery<User> query = realm.where(User.class).sort("time");
+
+        ArrayList<User> users = new ArrayList(query.findAll());
+
+        ListAdapter adapter = new ListAdapter(
+                this,
+                R.layout.user_item,
+                users
+        );
+
+        lv.setAdapter(adapter);
 
         for (User u: query.findAll()) {
             Log.e("xd", "xd"+u.getNameTime());
