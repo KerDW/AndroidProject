@@ -1,9 +1,13 @@
 package com.example.projecte_uf1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -15,6 +19,7 @@ import io.realm.Sort;
 public class BestScores extends AppCompatActivity {
 
     ListView lv;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +27,14 @@ public class BestScores extends AppCompatActivity {
         setContentView(R.layout.activity_best_scores);
 
         lv = findViewById(R.id.listView);
+        toolbar = findViewById(R.id.scoresToolbar);
+
+        setSupportActionBar(toolbar);
 
         Realm realm = Realm.getDefaultInstance();
 
-        RealmQuery<User> query = realm.where(User.class).sort("time", Sort.DESCENDING);
-
-        ArrayList<User> users = new ArrayList<>(query.findAll());
+        RealmQuery<User> query = realm.where(User.class).sort("time", Sort.DESCENDING).limit(10);
+        ArrayList<User> users = new ArrayList<>(query.findAllAsync());
 
         ListAdapter adapter = new ListAdapter(
                 this,
@@ -37,14 +44,22 @@ public class BestScores extends AppCompatActivity {
 
         lv.setAdapter(adapter);
 
-        for (User u: query.findAll()) {
-            Log.e("xd", "xd"+u.getNameTime());
-        }
 
 
-        // if we go back to the main activity like this the user won't be able to access this activity with the back button
-        // this.onBackPressed();
     }
 
+    public void goBack(MenuItem item){
+
+        this.onBackPressed();
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.scores_menu, menu);
+
+        return true;
+    }
 
 }
