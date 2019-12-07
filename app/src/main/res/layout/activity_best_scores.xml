@@ -44,6 +44,7 @@
         android:layout_height="72dp"
         android:backgroundTint="@color/colorSecondary"
         android:text="Reset leaderboard"
+        android:onClick="resetlb"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

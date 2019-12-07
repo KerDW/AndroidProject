@@ -20,6 +20,10 @@ public class BestScores extends AppCompatActivity {
 
     ListView lv;
     Toolbar toolbar;
+    Realm realm;
+
+    ArrayList<User> users;
+    ListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +35,18 @@ public class BestScores extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        Realm realm = Realm.getDefaultInstance();
+        realm = Realm.getDefaultInstance();
 
         RealmQuery<User> query = realm.where(User.class).sort("time", Sort.DESCENDING);
-        ArrayList<User> users = new ArrayList<>(query.findAllAsync());
+        users = new ArrayList<>(query.findAllAsync());
 
-        ListAdapter adapter = new ListAdapter(
+        adapter = new ListAdapter(
                 this,
                 R.layout.user_item,
                 users
         );
+
+
 
         lv.setAdapter(adapter);
 
@@ -62,4 +68,15 @@ public class BestScores extends AppCompatActivity {
         return true;
     }
 
+    public void resetlb(View view) {
+
+        realm.beginTransaction();
+        realm.deleteAll();
+        realm.commitTransaction();
+
+        users.clear();
+
+        adapter.notifyDataSetChanged();
+
+    }
 }
