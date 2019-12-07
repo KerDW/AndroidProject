@@ -6,12 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".BestScores">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="362dp"
-        android:layout_height="90dp"
-        android:text="Best scores here"
-        android:textSize="40dp"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="45dp" />
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="409dp"
+        android:layout_height="680dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoresToolbar" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/scoresToolbar"
+        android:layout_width="412dp"
+        android:layout_height="51dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Top 10 times"
+        app:titleTextColor="@color/primaryTextColor" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

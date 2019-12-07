@@ -82,7 +82,6 @@
         android:layout_height="51dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        style="@style/AppTheme"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         app:titleTextColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="parent"

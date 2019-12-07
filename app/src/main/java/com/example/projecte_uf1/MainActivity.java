@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,11 +18,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
+
+import io.realm.Realm;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,6 +52,16 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
+
+
+        // Initialize Realm
+        Realm.init(this);
+
+        // in case I need to reset the db schema
+        // Realm.deleteRealm(Realm.getDefaultConfiguration());
+
+        // Get a Realm instance for this thread
+        Realm realm = Realm.getDefaultInstance();
 
         sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
@@ -86,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(password.getText().toString().equals(sharedPref.getString(userSelected, ""))){
             Intent intent = new Intent(this, SecondActivity.class);
+            intent.putExtra("USER_NAME", userSelected);
             startActivityForResult(intent, GAME_START);
         } else {
             Toast.makeText(
@@ -101,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
 
             Toast.makeText(
             getApplicationContext(),
-            "This username already taken, choose a different one, please.",
+            "This username is already taken, choose a different one, please.",
             Toast.LENGTH_LONG).show();
 
             return;
@@ -159,8 +169,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
+        // Inflate the main_menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
 
         return true;
     }
