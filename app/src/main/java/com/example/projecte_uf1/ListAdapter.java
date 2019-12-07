@@ -38,10 +38,12 @@ class ListAdapter extends ArrayAdapter <User>{
         User u = users.get(position);
 
         //Rescatem els elements de la IU de la plantillaLayout
+        TextView pos = v.findViewById(R.id.position);
         TextView name = v.findViewById(R.id.user_name);
         TextView time = v.findViewById(R.id.user_time);
 
         //Fem un set de la info de l'element actual
+        pos.setText(position+1+"");
         name.setText(u.getName());
         time.setText(u.getTime()/1000+"s");
 

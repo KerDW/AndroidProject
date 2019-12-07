@@ -8,11 +8,12 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="409dp"
-        android:layout_height="680dp"
+        android:layout_width="411dp"
+        android:layout_height="564dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scoresToolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/scoresToolbar"
@@ -24,8 +25,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="Top 10 times"
+        app:title="Leaderboard"
         app:titleTextColor="@color/primaryTextColor" />
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_marginTop="2dp"
+        android:gravity="bottom"
+        android:text="Position                           Name                                                  Time"
+        app:layout_constraintTop_toBottomOf="@+id/scoresToolbar"
+        tools:layout_editor_absoluteX="2dp" />
+
+    <Button
+        android:id="@+id/resetLB"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:layout_marginTop="3dp"
+        android:backgroundTint="@color/colorSecondary"
+        android:text="Reset leaderboard"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
