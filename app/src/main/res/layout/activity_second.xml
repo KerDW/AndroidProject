@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.example.projecte_uf1.GuessingPanel"
+        android:name="com.example.projecte_uf1.FirstGameStaticFragment"
         android:layout_width="264dp"
         android:layout_height="128dp"
         app:layout_constraintEnd_toEndOf="parent"

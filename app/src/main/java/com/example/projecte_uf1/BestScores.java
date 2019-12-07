@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import io.realm.Realm;
 import io.realm.RealmQuery;
+import io.realm.Sort;
 
 public class BestScores extends AppCompatActivity {
 
@@ -24,9 +25,9 @@ public class BestScores extends AppCompatActivity {
 
         Realm realm = Realm.getDefaultInstance();
 
-        RealmQuery<User> query = realm.where(User.class).sort("time");
+        RealmQuery<User> query = realm.where(User.class).sort("time", Sort.DESCENDING);
 
-        ArrayList<User> users = new ArrayList(query.findAll());
+        ArrayList<User> users = new ArrayList<>(query.findAll());
 
         ListAdapter adapter = new ListAdapter(
                 this,
