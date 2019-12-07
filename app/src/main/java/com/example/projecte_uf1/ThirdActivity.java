@@ -74,10 +74,7 @@ public class ThirdActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        Toast.makeText(
-        getApplicationContext(),
-        "There is no escape.",
-        Toast.LENGTH_LONG).show();
+
     }
 
 

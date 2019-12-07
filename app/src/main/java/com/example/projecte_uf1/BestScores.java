@@ -33,7 +33,7 @@ public class BestScores extends AppCompatActivity {
 
         Realm realm = Realm.getDefaultInstance();
 
-        RealmQuery<User> query = realm.where(User.class).sort("time", Sort.DESCENDING).limit(10);
+        RealmQuery<User> query = realm.where(User.class).sort("time", Sort.DESCENDING);
         ArrayList<User> users = new ArrayList<>(query.findAllAsync());
 
         ListAdapter adapter = new ListAdapter(

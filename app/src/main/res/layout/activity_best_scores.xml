@@ -41,13 +41,11 @@
     <Button
         android:id="@+id/resetLB"
         android:layout_width="match_parent"
-        android:layout_height="68dp"
-        android:layout_marginTop="3dp"
+        android:layout_height="72dp"
         android:backgroundTint="@color/colorSecondary"
         android:text="Reset leaderboard"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/listView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

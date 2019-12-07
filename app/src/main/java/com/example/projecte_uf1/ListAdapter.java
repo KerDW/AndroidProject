@@ -45,7 +45,7 @@ class ListAdapter extends ArrayAdapter <User>{
         //Fem un set de la info de l'element actual
         pos.setText(position+1+"");
         name.setText(u.getName());
-        time.setText(u.getTime()/1000+"s");
+        time.setText(String.format("%.3f",u.getTime()/1000)+"s");
 
         return v;
 
