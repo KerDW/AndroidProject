@@ -8,12 +8,24 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="409dp"
+        android:layout_height="680dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/scoresToolbar" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/scoresToolbar"
+        android:layout_width="412dp"
+        android:layout_height="51dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Top 10 times"
+        app:titleTextColor="@color/primaryTextColor" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

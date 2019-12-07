@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,14 +18,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,12 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialize Realm
         Realm.init(this);
-        // is there a need to set a default realm?
-//      RealmConfiguration config = new RealmConfiguration.Builder().name("myrealm.realm").build();
-//      Realm.setDefaultConfiguration(config);
 
-        // in case I need to reset the db
-//        Realm.deleteRealm(Realm.getDefaultConfiguration());
+        // in case I need to reset the db schema
+        // Realm.deleteRealm(Realm.getDefaultConfiguration());
 
         // Get a Realm instance for this thread
         Realm realm = Realm.getDefaultInstance();
@@ -176,8 +169,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
+        // Inflate the main_menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
 
         return true;
     }
