@@ -78,18 +78,23 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == GAME_START && resultCode == RESULT_CANCELED) {
+        // if the user doesn't lose on time this will happen
+        if (requestCode == GAME_START && resultCode == RESULT_OK) {
 
 
-
-        } else{
-
-            
 
         }
     }
 
-    public void login(View view) {
+    public void play(View view) {
+
+//        if(sharedPref.getString(userSelected, "").equals("")){
+//            Toast.makeText(
+//            getApplicationContext(),
+//            "You need to create a user first.",
+//            Toast.LENGTH_LONG).show();
+//            return;
+//        };
 
         if(password.getText().toString().equals(sharedPref.getString(userSelected, ""))){
             Intent intent = new Intent(this, SecondActivity.class);
@@ -99,17 +104,26 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(
             getApplicationContext(),
             "Wrong password.",
-            Toast.LENGTH_LONG).show();
+            Toast.LENGTH_SHORT).show();
         }
     }
 
     public void register(View view) {
 
+        if(newUser.getText().toString().equals("")){
+            Toast.makeText(
+            getApplicationContext(),
+            "The username can't be empty.",
+            Toast.LENGTH_SHORT).show();
+
+            return;
+        }
+
         if(usersList.contains(newUser.getText().toString())){
 
             Toast.makeText(
             getApplicationContext(),
-            "This username is already taken, choose a different one, please.",
+            "This username is already taken.",
             Toast.LENGTH_LONG).show();
 
             return;
@@ -121,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(
         getApplicationContext(),
         "User created.",
-        Toast.LENGTH_LONG).show();
+        Toast.LENGTH_SHORT).show();
 
         usersList.add(newUser.getText().toString());
         adapter.notifyDataSetChanged();

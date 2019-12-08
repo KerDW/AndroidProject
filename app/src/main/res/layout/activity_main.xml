@@ -58,7 +58,7 @@
         android:layout_height="68dp"
         android:layout_marginBottom="48dp"
         android:backgroundTint="@color/colorSecondary"
-        android:onClick="login"
+        android:onClick="play"
         android:text="Play"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

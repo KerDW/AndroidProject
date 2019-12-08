@@ -51,10 +51,6 @@ public class ThirdActivity extends AppCompatActivity {
         realm.copyToRealmOrUpdate(user);
         realm.commitTransaction();
 
-//        RealmQuery<User> query = realm.where(User.class);
-//
-//        Log.e("xd", "xd"+query.equalTo("name", userName).findFirst().getName());
-
     }
 
     public void createTimer(){

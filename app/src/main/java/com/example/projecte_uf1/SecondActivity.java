@@ -190,6 +190,9 @@ public class SecondActivity extends AppCompatActivity {
 
         } else{
 
+            setResult(RESULT_OK, intent);
+            finish();
+
         }
     }
 
