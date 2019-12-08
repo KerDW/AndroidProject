@@ -80,13 +80,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (requestCode == GAME_START && resultCode == RESULT_CANCELED) {
 
-            editor.remove(userSelected);
-            editor.apply();
 
-            usersList.remove(userSelected);
-            adapter.notifyDataSetChanged();
 
         } else{
+
+            
 
         }
     }
@@ -182,6 +180,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void resetUsers(View view) {
+
+        editor.clear();
+        editor.apply();
 
         usersList.clear();
         adapter.notifyDataSetChanged();
