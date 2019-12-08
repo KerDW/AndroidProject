@@ -1,6 +1,7 @@
 package com.example.projecte_uf1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.opengl.Visibility;
@@ -26,6 +27,9 @@ public class ThirdActivity extends AppCompatActivity {
     CountDownTimer cdn;
     int timeLeft;
     String userName;
+
+    Fragment currentFrag;
+    int fragmentSwapper = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,28 @@ public class ThirdActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 timeLeft = (int) millisUntilFinished;
                 timerTV.setText("Seconds remaining: " + millisUntilFinished / 1000);
+
+                switch(fragmentSwapper){
+                    case 0:
+                        currentFrag = new SecondGameDynamicFragment_1();
+                        fragmentSwapper++;
+                        break;
+                    case 1:
+                        currentFrag = new SecondGameDynamicFragment_2();
+                        fragmentSwapper++;
+                        break;
+                    case 2:
+                        currentFrag = new SecondGameDynamicFragment_3();
+                        fragmentSwapper = 0;
+                        break;
+                }
+
+                getSupportFragmentManager().
+                        beginTransaction().
+                        replace(R.id.fragContainer, currentFrag).
+                        commit();
+
+
             }
 
             public void onFinish() {

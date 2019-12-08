@@ -26,6 +26,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
+        android:id="@+id/fragContainer"
         android:layout_width="411dp"
         android:layout_height="614dp"
         app:layout_constraintBottom_toBottomOf="parent"
