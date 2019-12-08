@@ -132,6 +132,7 @@ public class SecondActivity extends AppCompatActivity {
                             @Override
                             public void run() {
 
+                                // this method hanges view stuff inside
                                 generateRandomChars(5);
                                 inputText.setText("");
 
