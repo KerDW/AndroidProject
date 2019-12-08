@@ -54,13 +54,17 @@ class ListAdapter extends ArrayAdapter <User>{
                 PackageManager pm = c.getPackageManager();
                 try {
 
+                    // any type of share needs to use action_send
                     Intent waIntent = new Intent(Intent.ACTION_SEND);
                     waIntent.setType("text/plain");
                     String text = "Check out my time in this try: "+u.getTime()/1000+"s!";
 
+                    // get whatsapp package info to determine whether whatsapp is installed on the phone
+                    // this allows us to catch a specific exception on the catch block
                     PackageInfo info = pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
                     waIntent.setPackage("com.whatsapp");
 
+                    // put the text I need in the intent then share
                     waIntent.putExtra(Intent.EXTRA_TEXT, text);
                     c.startActivity(Intent.createChooser(waIntent, "Share with"));
 
