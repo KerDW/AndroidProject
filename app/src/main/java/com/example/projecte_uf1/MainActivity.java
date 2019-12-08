@@ -180,4 +180,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, BestScores.class));
 
     }
+
+    public void resetUsers(View view) {
+
+        usersList.clear();
+        adapter.notifyDataSetChanged();
+
+    }
 }
