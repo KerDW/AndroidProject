@@ -3,9 +3,12 @@ package com.example.projecte_uf1;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,8 +20,10 @@ public class ThirdActivity extends AppCompatActivity {
     Intent intent;
 
     TextView timerTV;
-    CountDownTimer cdn;
     TextView timeLeftInfo;
+    Button begin;
+
+    CountDownTimer cdn;
     int timeLeft;
     String userName;
 
@@ -29,11 +34,14 @@ public class ThirdActivity extends AppCompatActivity {
 
         timeLeftInfo = findViewById(R.id.timeLeftInfo);
         timerTV = findViewById(R.id.timerTV2);
+        begin = findViewById(R.id.beginGame);
 
         intent = getIntent();
         userName = intent.getStringExtra("USER_NAME");
         timeLeft = intent.getIntExtra("TIME_LEFT", 0);
-        timeLeftInfo.setText("You've got " + timeLeft/1000 + " seconds left.");
+
+        timeLeftInfo.setText("You've got " + timeLeft/1000 + " seconds left, press start to begin the second game.");
+        timerTV.setText("Seconds remaining: "+timeLeft/1000);
 
         Realm realm = Realm.getDefaultInstance();
 
@@ -46,8 +54,6 @@ public class ThirdActivity extends AppCompatActivity {
 //        RealmQuery<User> query = realm.where(User.class);
 //
 //        Log.e("xd", "xd"+query.equalTo("name", userName).findFirst().getName());
-
-        createTimer();
 
     }
 
@@ -77,4 +83,11 @@ public class ThirdActivity extends AppCompatActivity {
 
     }
 
+    public void beginGameTwo(View view) {
+
+        createTimer();
+        timeLeftInfo.setVisibility(View.INVISIBLE);
+        begin.setVisibility(View.INVISIBLE);
+
+    }
 }
