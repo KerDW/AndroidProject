@@ -10,7 +10,7 @@
         android:id="@+id/newUser"
         android:layout_width="145dp"
         android:layout_height="50dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="108dp"
         android:backgroundTint="@color/colorSecondaryLight"
         android:inputType="text"
         android:text=""
@@ -22,25 +22,30 @@
         android:id="@+id/register"
         android:layout_width="145dp"
         android:layout_height="50dp"
+        android:layout_marginTop="22dp"
         android:layout_marginBottom="392dp"
         android:backgroundTint="@color/colorSecondary"
         android:onClick="register"
         android:text="Register"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newPass"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/newPass"
         android:layout_width="145dp"
         android:layout_height="50dp"
+        android:layout_marginTop="28dp"
         android:layout_marginBottom="464dp"
         android:backgroundTint="@color/colorSecondaryLight"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newUser" />
 
 
     <Spinner
