@@ -1,8 +1,10 @@
 package com.example.projecte_uf1;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.opengl.Visibility;
 import android.os.Bundle;
@@ -122,19 +124,49 @@ public class ThirdActivity extends AppCompatActivity {
 
     public void checkBoxes(View view) {
 
-        if(checks == 14){
+        if(checks == 1){
             cdn.cancel();
 
-            User user = new User(userName, timeLeft);
+            AlertDialog.Builder ad = new AlertDialog.Builder(this);
+            ad.setMessage("Congratulations, you finished in time!\n" +
+                    "Would you like to save your game time?");
+            ad.setCancelable(false);
+            ad.setPositiveButton(
+            "Sure",
+            new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // time shouldn't be running anymore so no waste of time
+                            // on user input
+                            User user = new User(userName, timeLeft);
 
-            realm.beginTransaction();
-            realm.copyToRealmOrUpdate(user);
-            realm.commitTransaction();
+                            realm.beginTransaction();
+                            realm.copyToRealmOrUpdate(user);
+                            realm.commitTransaction();
 
-            setResult(RESULT_OK, intent);
-            finish();
+                            setResult(RESULT_OK, intent);
+                            finish();
 
-            return;
+                            dialog.cancel();
+                        }
+                    });
+
+            ad.setNegativeButton(
+            "No, thanks!",
+            new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                            setResult(RESULT_OK, intent);
+                            finish();
+
+                            dialog.cancel();
+                        }
+                    });
+            ad.setTitle("Game completion");
+            ad.setIcon(android.R.drawable.ic_menu_save);
+
+            AlertDialog alert = ad.create();
+            alert.show();
+
         }
 
         if(!cbs.contains(view.getId())){
