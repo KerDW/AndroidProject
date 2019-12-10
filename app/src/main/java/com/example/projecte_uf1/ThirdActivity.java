@@ -92,7 +92,6 @@ public class ThirdActivity extends AppCompatActivity {
                         replace(R.id.fragContainer, currentFrag).
                         commit();
 
-
             }
 
             public void onFinish() {

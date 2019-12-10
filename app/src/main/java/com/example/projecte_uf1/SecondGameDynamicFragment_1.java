@@ -113,9 +113,9 @@ public class SecondGameDynamicFragment_1 extends Fragment {
 //                Log.e("xd", "xd"+height);
 
                 cb1.animate()
-                        .x(0)
-                        .y(height)
-                        .setDuration(100)
+                        .x(dx)
+                        .y(dy)
+                        .setDuration(0)
                         .start();
 
                 dx = rand.nextFloat() * width;
@@ -124,7 +124,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                 cb2.animate()
                         .x(dx)
                         .y(dy)
-                        .setDuration(100)
+                        .setDuration(0)
                         .start();
 
                 dx = rand.nextFloat() * width;
@@ -133,7 +133,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                 cb3.animate()
                         .x(dx)
                         .y(dy)
-                        .setDuration(100)
+                        .setDuration(0)
                         .start();
 
                 dx = rand.nextFloat() * width;
@@ -142,7 +142,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                 cb4.animate()
                         .x(dx)
                         .y(dy)
-                        .setDuration(100)
+                        .setDuration(0)
                         .start();
 
                 dx = rand.nextFloat() * width;
@@ -151,7 +151,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                 cb5.animate()
                         .x(dx)
                         .y(dy)
-                        .setDuration(100)
+                        .setDuration(0)
                         .start();
             }
         });
