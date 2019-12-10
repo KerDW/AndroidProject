@@ -124,7 +124,17 @@ public class ThirdActivity extends AppCompatActivity {
 
     public void checkBoxes(View view) {
 
-        if(checks == 1){
+        if(!cbs.contains(view.getId())){
+            cbs.add(view.getId());
+            checks++;
+        } else {
+            // got to get an Integer object otherwise the arraylist thinks it's an index and crashes
+            cbs.remove(Integer.valueOf(view.getId()));
+            checks--;
+        }
+
+
+        if(checks == 15){
             cdn.cancel();
 
             AlertDialog.Builder ad = new AlertDialog.Builder(this);
@@ -167,14 +177,6 @@ public class ThirdActivity extends AppCompatActivity {
             AlertDialog alert = ad.create();
             alert.show();
 
-        }
-
-        if(!cbs.contains(view.getId())){
-            cbs.add(view.getId());
-            checks++;
-        } else {
-            cbs.remove(view.getId());
-            checks--;
         }
 
     }

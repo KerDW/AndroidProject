@@ -199,7 +199,7 @@ public class SecondActivity extends AppCompatActivity {
 
     public void checkInput() {
 
-        if(markCount == 0){
+        if(markCount == 4){
             cdn.cancel();
 
             Intent intent2 = new Intent(this, ThirdActivity.class);

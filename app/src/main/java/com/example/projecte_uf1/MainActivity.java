@@ -88,13 +88,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void play(View view) {
 
-//        if(sharedPref.getString(userSelected, "").equals("")){
-//            Toast.makeText(
-//            getApplicationContext(),
-//            "You need to create a user first.",
-//            Toast.LENGTH_LONG).show();
-//            return;
-//        };
+        if(userSelected == null || userSelected.equals("")){
+            Toast.makeText(
+            getApplicationContext(),
+            "You need to create a user first.",
+            Toast.LENGTH_LONG).show();
+            return;
+        }
 
         if(password.getText().toString().equals(sharedPref.getString(userSelected, ""))){
             Intent intent = new Intent(this, SecondActivity.class);
