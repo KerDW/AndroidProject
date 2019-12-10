@@ -24,6 +24,10 @@ public class ThirdActivity extends AppCompatActivity {
     TextView timeLeftInfo;
     Button begin;
 
+    Fragment sdf_1;
+    Fragment sdf_2;
+    Fragment sdf_3;
+
     CountDownTimer cdn;
     int timeLeft;
     String userName;
@@ -43,6 +47,10 @@ public class ThirdActivity extends AppCompatActivity {
         intent = getIntent();
         userName = intent.getStringExtra("USER_NAME");
         timeLeft = intent.getIntExtra("TIME_LEFT", 0);
+
+        sdf_1 = new SecondGameDynamicFragment_1();
+        sdf_2 = new SecondGameDynamicFragment_2();
+        sdf_3 = new SecondGameDynamicFragment_3();
 
         timeLeftInfo.setText("You've got " + timeLeft/1000 + " seconds left, press start to begin the second game.");
         timerTV.setText("Seconds remaining: "+timeLeft/1000);
@@ -66,15 +74,15 @@ public class ThirdActivity extends AppCompatActivity {
 
                 switch(fragmentSwapper){
                     case 0:
-                        currentFrag = new SecondGameDynamicFragment_1();
+                        currentFrag = sdf_1;
                         fragmentSwapper++;
                         break;
                     case 1:
-                        currentFrag = new SecondGameDynamicFragment_2();
+                        currentFrag = sdf_2;
                         fragmentSwapper++;
                         break;
                     case 2:
-                        currentFrag = new SecondGameDynamicFragment_3();
+                        currentFrag = sdf_3;
                         fragmentSwapper = 0;
                         break;
                 }
