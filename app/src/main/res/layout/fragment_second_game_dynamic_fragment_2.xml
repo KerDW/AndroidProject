@@ -8,30 +8,40 @@
 
     <CheckBox
         android:id="@+id/f2cb1"
+        android:onClick="checkBoxes"
+        tools:ignore="OnClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:buttonTint="@color/colorSecondary" />
 
     <CheckBox
         android:id="@+id/f2cb2"
+        android:onClick="checkBoxes"
+        tools:ignore="OnClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:buttonTint="@color/colorSecondary" />
 
     <CheckBox
         android:id="@+id/f2cb3"
+        android:onClick="checkBoxes"
+        tools:ignore="OnClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:buttonTint="@color/colorSecondary" />
 
     <CheckBox
         android:id="@+id/f2cb4"
+        android:onClick="checkBoxes"
+        tools:ignore="OnClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:buttonTint="@color/colorSecondary" />
 
     <CheckBox
         android:id="@+id/f2cb5"
+        android:onClick="checkBoxes"
+        tools:ignore="OnClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:buttonTint="@color/colorSecondary" />
