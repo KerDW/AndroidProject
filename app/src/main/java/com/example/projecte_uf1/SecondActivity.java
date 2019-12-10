@@ -56,7 +56,7 @@ public class SecondActivity extends AppCompatActivity {
         intent = getIntent();
 
 
-        generateRandomChars(5);
+        generateRandomChars(6);
         progressBarLogic();
         createTimer();
 
@@ -132,8 +132,8 @@ public class SecondActivity extends AppCompatActivity {
                             @Override
                             public void run() {
 
-                                // this method hanges view stuff inside
-                                generateRandomChars(5);
+                                // this method changes view stuff inside
+                                generateRandomChars(6);
                                 inputText.setText("");
 
                             }
@@ -153,7 +153,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void createTimer(){
-        cdn = new CountDownTimer(60000, 1000) {
+        cdn = new CountDownTimer(40000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timeLeft = (int) millisUntilFinished;
@@ -200,6 +200,11 @@ public class SecondActivity extends AppCompatActivity {
     public void checkInput() {
 
         if(markCount == 4){
+
+            // I had a bug with the emulator where this method would keep firing
+            // during testing where markCount condition was 0, this is just in case
+            markCount = -1;
+
             cdn.cancel();
 
             Intent intent2 = new Intent(this, ThirdActivity.class);
@@ -216,7 +221,7 @@ public class SecondActivity extends AppCompatActivity {
             if (inputString.equals(generatedString)) {
                 markCount++;
 
-                generateRandomChars(5);
+                generateRandomChars(6);
                 marks.setText(markCount + marksString.substring(1));
 
                 progress = 0;
