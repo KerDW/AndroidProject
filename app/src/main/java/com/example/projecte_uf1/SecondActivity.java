@@ -79,7 +79,7 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        // loading gif instantly since it was preloaded in the first activity
+        // loading gif from cache
         Glide.with(this)
                 .load("https://gifimage.net/wp-content/uploads/2017/10/megaman-running-gif-1.gif")
                 .apply(RequestOptions.diskCacheStrategyOf(DiskCacheStrategy.RESOURCE))
@@ -132,6 +132,7 @@ public class SecondActivity extends AppCompatActivity {
                             @Override
                             public void run() {
 
+                                // this method hanges view stuff inside
                                 generateRandomChars(5);
                                 inputText.setText("");
 
@@ -152,7 +153,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void createTimer(){
-        cdn = new CountDownTimer(6000, 1000) {
+        cdn = new CountDownTimer(60000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timeLeft = (int) millisUntilFinished;

@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         usersList = new ArrayList<String>();
         spinnerSetup();
 
-        // preload megaman gif for the second activity so there's no delay later
+        // load megaman gif for the second activity into cache
         Glide.with(this)
                 .load("https://gifimage.net/wp-content/uploads/2017/10/megaman-running-gif-1.gif")
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)

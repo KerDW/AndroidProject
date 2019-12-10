@@ -1,6 +1,7 @@
 package com.example.projecte_uf1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.opengl.Visibility;
@@ -12,20 +13,33 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import io.realm.Realm;
 import io.realm.RealmQuery;
 
 public class ThirdActivity extends AppCompatActivity {
 
     Intent intent;
+    Realm realm;
 
     TextView timerTV;
     TextView timeLeftInfo;
     Button begin;
 
+    Fragment sdf_1;
+    Fragment sdf_2;
+    Fragment sdf_3;
+
+    ArrayList<Integer> cbs = new ArrayList<>();
+    int checks = 0;
+
     CountDownTimer cdn;
     int timeLeft;
     String userName;
+
+    Fragment currentFrag;
+    int fragmentSwapper = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,19 +51,17 @@ public class ThirdActivity extends AppCompatActivity {
         begin = findViewById(R.id.beginGame);
 
         intent = getIntent();
+        realm = Realm.getDefaultInstance();
+
         userName = intent.getStringExtra("USER_NAME");
         timeLeft = intent.getIntExtra("TIME_LEFT", 0);
 
+        sdf_1 = new SecondGameDynamicFragment_1();
+        sdf_2 = new SecondGameDynamicFragment_2();
+        sdf_3 = new SecondGameDynamicFragment_3();
+
         timeLeftInfo.setText("You've got " + timeLeft/1000 + " seconds left, press start to begin the second game.");
         timerTV.setText("Seconds remaining: "+timeLeft/1000);
-
-        Realm realm = Realm.getDefaultInstance();
-
-        User user = new User(userName, timeLeft);
-
-        realm.beginTransaction();
-        realm.copyToRealmOrUpdate(user);
-        realm.commitTransaction();
 
     }
 
@@ -59,6 +71,27 @@ public class ThirdActivity extends AppCompatActivity {
             public void onTick(long millisUntilFinished) {
                 timeLeft = (int) millisUntilFinished;
                 timerTV.setText("Seconds remaining: " + millisUntilFinished / 1000);
+
+                switch(fragmentSwapper){
+                    case 0:
+                        currentFrag = sdf_1;
+                        fragmentSwapper++;
+                        break;
+                    case 1:
+                        currentFrag = sdf_2;
+                        fragmentSwapper++;
+                        break;
+                    case 2:
+                        currentFrag = sdf_3;
+                        fragmentSwapper = 0;
+                        break;
+                }
+
+                getSupportFragmentManager().
+                        beginTransaction().
+                        replace(R.id.fragContainer, currentFrag).
+                        commit();
+
             }
 
             public void onFinish() {
@@ -84,6 +117,33 @@ public class ThirdActivity extends AppCompatActivity {
         createTimer();
         timeLeftInfo.setVisibility(View.INVISIBLE);
         begin.setVisibility(View.INVISIBLE);
+
+    }
+
+    public void checkBoxes(View view) {
+
+        if(checks == 14){
+            cdn.cancel();
+
+            User user = new User(userName, timeLeft);
+
+            realm.beginTransaction();
+            realm.copyToRealmOrUpdate(user);
+            realm.commitTransaction();
+
+            setResult(RESULT_OK, intent);
+            finish();
+
+            return;
+        }
+
+        if(!cbs.contains(view.getId())){
+            cbs.add(view.getId());
+            checks++;
+        } else {
+            cbs.remove(view.getId());
+            checks--;
+        }
 
     }
 }
