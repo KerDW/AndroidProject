@@ -7,6 +7,8 @@ import java.util.Random;
 public class DynamicFragmentsViewModel extends ViewModel {
 
     private Dimensions dimensions;
+    private Dimensions[] checkboxesPositions = new Dimensions[4];
+    private int counter = 0;
 
     public void setWidthHeight(Dimensions d){
         this.dimensions = d;
@@ -15,35 +17,33 @@ public class DynamicFragmentsViewModel extends ViewModel {
     public Dimensions getRandomDimensions(Dimensions previousDimensions){
 
         Random rand = new Random();
-        float dx = rand.nextFloat() * dimensions.getWidth();
-        float dy = rand.nextFloat() * dimensions.getHeight();
 
-        cb2.animate()
-                .x(dx)
-                .y(dy)
-                .setDuration(0)
-                .start();
+        float dx;
+        float dy;
+        float separation = 10;
 
-        dx = rand.nextFloat() * width;
-        dy = rand.nextFloat() * height;
+        do {
+            dx = rand.nextFloat() * dimensions.getWidth();
+            dy = rand.nextFloat() * dimensions.getHeight();
+        } while((dx >= previousDimensions.getWidth()-separation && dx <= previousDimensions.getWidth()+separation) || (dy >= previousDimensions.getHeight()-separation && dy <= previousDimensions.getHeight()+separation));
 
-        cb3.animate()
-                .x(dx)
-                .y(dy)
-                .setDuration(0)
-                .start();
+        Dimensions newDimensions = new Dimensions(dx, dy);
 
-        dx = rand.nextFloat() * width;
-        dy = rand.nextFloat() * height;
+        if(counter == 4){
+            counter = 0;
+        }
+        checkboxesPositions[counter] = newDimensions;
+        counter++;
 
-        cb4.animate()
-                .x(dx)
-                .y(dy)
-                .setDuration(0)
-                .start();
+        return newDimensions;
+    }
 
-        dx = rand.nextFloat() * width;
-        dy = rand.nextFloat() * height;
+    public Dimensions[] getLastFragmentDimensions(){
+        if(checkboxesPositions.length != 0){
+            return checkboxesPositions;
+        } else {
+            return null;
+        }
     }
 
 }

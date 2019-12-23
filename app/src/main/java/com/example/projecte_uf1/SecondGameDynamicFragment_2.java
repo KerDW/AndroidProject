@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -102,59 +103,66 @@ public class SecondGameDynamicFragment_2 extends Fragment {
                     layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 }
 
+                DynamicFragmentsViewModel model = ViewModelProviders.of(SecondGameDynamicFragment_2.this).get(DynamicFragmentsViewModel.class);
                 int width  = layout.getMeasuredWidth();
                 int height = layout.getMeasuredHeight();
+                int animationDuration = 200;
 
                 width = width - (width/100*8);
                 height = height - (height/100*6);
 
-                Random rand = new Random();
-                float dx = rand.nextFloat() * width;
-                float dy = rand.nextFloat() * height;
+                model.setWidthHeight(new Dimensions(width, height));
+                Dimensions newDimensions = model.getRandomDimensions(new Dimensions(0,0));
 
-//                Log.e("xd", "xd"+width);
-//                Log.e("xd", "xd"+height);
+                if(model.getLastFragmentDimensions() != null){
+                    cb1.setX(model.getLastFragmentDimensions()[0].getWidth());
+                    cb1.setY(model.getLastFragmentDimensions()[0].getHeight());
+                    cb2.setX(model.getLastFragmentDimensions()[1].getWidth());
+                    cb2.setY(model.getLastFragmentDimensions()[1].getHeight());
+                    cb3.setX(model.getLastFragmentDimensions()[2].getWidth());
+                    cb3.setY(model.getLastFragmentDimensions()[2].getHeight());
+                    cb4.setX(model.getLastFragmentDimensions()[3].getWidth());
+                    cb4.setY(model.getLastFragmentDimensions()[3].getHeight());
+                    cb5.setX(model.getLastFragmentDimensions()[4].getWidth());
+                    cb5.setY(model.getLastFragmentDimensions()[4].getHeight());
+                }
 
                 cb1.animate()
-                        .x(dx)
-                        .y(dy)
-                        .setDuration(0)
+                        .x(newDimensions.getWidth())
+                        .y(newDimensions.getHeight())
+                        .setDuration(animationDuration)
                         .start();
 
-                dx = rand.nextFloat() * width;
-                dy = rand.nextFloat() * height;
+                newDimensions = model.getRandomDimensions(new Dimensions(newDimensions.getWidth(), newDimensions.getHeight()));
 
                 cb2.animate()
-                        .x(dx)
-                        .y(dy)
-                        .setDuration(0)
+                        .x(newDimensions.getWidth())
+                        .y(newDimensions.getHeight())
+                        .setDuration(animationDuration)
                         .start();
 
-                dx = rand.nextFloat() * width;
-                dy = rand.nextFloat() * height;
+                newDimensions = model.getRandomDimensions(new Dimensions(newDimensions.getWidth(), newDimensions.getHeight()));
 
                 cb3.animate()
-                        .x(dx)
-                        .y(dy)
-                        .setDuration(0)
+                        .x(newDimensions.getWidth())
+                        .y(newDimensions.getHeight())
+                        .setDuration(animationDuration)
                         .start();
 
-                dx = rand.nextFloat() * width;
-                dy = rand.nextFloat() * height;
+                newDimensions = model.getRandomDimensions(new Dimensions(newDimensions.getWidth(), newDimensions.getHeight()));
 
                 cb4.animate()
-                        .x(dx)
-                        .y(dy)
-                        .setDuration(0)
+                        .x(newDimensions.getWidth())
+                        .y(newDimensions.getHeight())
+                        .setDuration(animationDuration)
                         .start();
 
-                dx = rand.nextFloat() * width;
-                dy = rand.nextFloat() * height;
+                newDimensions = model.getRandomDimensions(new Dimensions(newDimensions.getWidth(), newDimensions.getHeight()));
 
                 cb5.animate()
-                        .x(dx)
-                        .y(dy)
-                        .setDuration(0)
+                        .x(newDimensions.getWidth())
+                        .y(newDimensions.getHeight())
+                        .setDuration(animationDuration)
                         .start();
             }
         });
