@@ -35,6 +35,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
     private static final String ARG_PARAM2 = "param2";
     private String mParam1;
     private String mParam2;
+    private DynamicFragmentsViewModel model;
 
     CheckBox cb1;
     CheckBox cb2;
@@ -99,8 +100,11 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                     layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                 }
 
+
                 int width  = layout.getMeasuredWidth();
                 int height = layout.getMeasuredHeight();
+
+                model.setWidthHeight(new Dimensions(width, height));
 
                 width = width - (width/100*8);
                 height = height - (height/100*6);
