@@ -1,13 +1,16 @@
 package com.example.projecte_uf1;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class DynamicFragmentsViewModel extends ViewModel {
 
     private Dimensions dimensions;
-    private Dimensions[] checkboxesPositions = new Dimensions[4];
+    private MutableLiveData<ArrayList<Dimensions>> checkboxesPositions = new MutableLiveData<ArrayList<Dimensions>>();
     private int counter = 0;
 
     public void setWidthHeight(Dimensions d){
@@ -29,17 +32,17 @@ public class DynamicFragmentsViewModel extends ViewModel {
 
         Dimensions newDimensions = new Dimensions(dx, dy);
 
-        if(counter == 4){
+        if(counter == 5){
             counter = 0;
         }
-        checkboxesPositions[counter] = newDimensions;
+        checkboxesPositions.getValue().add(newDimensions);
         counter++;
 
         return newDimensions;
     }
 
-    public Dimensions[] getLastFragmentDimensions(){
-        if(checkboxesPositions.length != 0){
+    public MutableLiveData<ArrayList<Dimensions>> getLastFragmentDimensions(){
+        if(checkboxesPositions.getValue().size() != 0){
             return checkboxesPositions;
         } else {
             return null;
