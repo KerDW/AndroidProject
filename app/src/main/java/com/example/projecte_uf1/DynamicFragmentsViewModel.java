@@ -10,7 +10,8 @@ import java.util.Random;
 public class DynamicFragmentsViewModel extends ViewModel {
 
     private Dimensions dimensions;
-    private MutableLiveData<ArrayList<Dimensions>> checkboxesPositions = new MutableLiveData<ArrayList<Dimensions>>();
+    private MutableLiveData<ArrayList<Dimensions>> mcheckboxesPositions = new MutableLiveData<>();
+    private ArrayList<Dimensions> checkboxesPositions = new ArrayList<>();
     private int counter = 0;
 
     public void setWidthHeight(Dimensions d){
@@ -25,6 +26,7 @@ public class DynamicFragmentsViewModel extends ViewModel {
         float dy;
         float separation = 10;
 
+
         do {
             dx = rand.nextFloat() * dimensions.getWidth();
             dy = rand.nextFloat() * dimensions.getHeight();
@@ -35,15 +37,16 @@ public class DynamicFragmentsViewModel extends ViewModel {
         if(counter == 5){
             counter = 0;
         }
-        checkboxesPositions.getValue().add(newDimensions);
+        checkboxesPositions.add(newDimensions);
+        mcheckboxesPositions.setValue(checkboxesPositions);
         counter++;
 
         return newDimensions;
     }
 
-    public MutableLiveData<ArrayList<Dimensions>> getLastFragmentDimensions(){
-        if(checkboxesPositions.getValue().size() != 0){
-            return checkboxesPositions;
+    public ArrayList<Dimensions> getLastFragmentDimensions(){
+        if(checkboxesPositions.isEmpty()){
+            return mcheckboxesPositions.getValue();
         } else {
             return null;
         }

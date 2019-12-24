@@ -113,16 +113,16 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                 Dimensions newDimensions = model.getRandomDimensions(new Dimensions(0,0));
 
                 if(model.getLastFragmentDimensions() != null){
-                    cb1.setX(model.getLastFragmentDimensions().getValue().get(0).getWidth());
-                    cb1.setY(model.getLastFragmentDimensions().getValue().get(0).getHeight());
-                    cb2.setX(model.getLastFragmentDimensions().getValue().get(1).getWidth());
-                    cb2.setY(model.getLastFragmentDimensions().getValue().get(1).getHeight());
-                    cb3.setX(model.getLastFragmentDimensions().getValue().get(2).getWidth());
-                    cb3.setY(model.getLastFragmentDimensions().getValue().get(2).getHeight());
-                    cb4.setX(model.getLastFragmentDimensions().getValue().get(3).getWidth());
-                    cb4.setY(model.getLastFragmentDimensions().getValue().get(3).getHeight());
-                    cb5.setX(model.getLastFragmentDimensions().getValue().get(4).getWidth());
-                    cb5.setY(model.getLastFragmentDimensions().getValue().get(4).getHeight());
+                    cb1.setX(model.getLastFragmentDimensions().get(0).getWidth());
+                    cb1.setY(model.getLastFragmentDimensions().get(0).getHeight());
+                    cb2.setX(model.getLastFragmentDimensions().get(1).getWidth());
+                    cb2.setY(model.getLastFragmentDimensions().get(1).getHeight());
+                    cb3.setX(model.getLastFragmentDimensions().get(2).getWidth());
+                    cb3.setY(model.getLastFragmentDimensions().get(2).getHeight());
+                    cb4.setX(model.getLastFragmentDimensions().get(3).getWidth());
+                    cb4.setY(model.getLastFragmentDimensions().get(3).getHeight());
+                    cb5.setX(model.getLastFragmentDimensions().get(4).getWidth());
+                    cb5.setY(model.getLastFragmentDimensions().get(4).getHeight());
                 }
 
                 cb1.animate()
