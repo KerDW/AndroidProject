@@ -110,9 +110,9 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                 height = height - (height/100*6);
 
                 model.setWidthHeight(new Dimensions(width, height));
-                Dimensions newDimensions = model.getRandomDimensions(new Dimensions(0,0));
+                Dimensions newDimensions = new Dimensions(0,0);
 
-                if(model.getLastFragmentDimensions().length == 4){
+                if(model.getLastFragmentDimensions()[3] != null){
                     cb1.setX(model.getLastFragmentDimensions()[0].getWidth());
                     cb1.setY(model.getLastFragmentDimensions()[0].getHeight());
                     cb2.setX(model.getLastFragmentDimensions()[1].getWidth());
