@@ -12,7 +12,7 @@
         tools:ignore="OnClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:buttonTint="@color/colorSecondary" />
+        android:buttonTint="@color/blue" />
 
     <CheckBox
         android:id="@+id/f3cb2"
@@ -20,7 +20,7 @@
         tools:ignore="OnClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:buttonTint="@color/colorSecondary" />
+        android:buttonTint="@color/blue" />
 
     <CheckBox
         android:id="@+id/f3cb3"
@@ -28,7 +28,7 @@
         tools:ignore="OnClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:buttonTint="@color/colorSecondary" />
+        android:buttonTint="@color/blue" />
 
     <CheckBox
         android:id="@+id/f3cb4"
@@ -36,7 +36,7 @@
         tools:ignore="OnClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:buttonTint="@color/colorSecondary" />
+        android:buttonTint="@color/blue" />
 
     <CheckBox
         android:id="@+id/f3cb5"
@@ -44,7 +44,7 @@
         tools:ignore="OnClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:buttonTint="@color/colorSecondary" />
+        android:buttonTint="@color/blue" />
 
 
 </FrameLayout>

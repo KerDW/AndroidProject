@@ -103,7 +103,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
 
                 float width  = layout.getMeasuredWidth();
                 float height = layout.getMeasuredHeight();
-                int animationDuration = 200;
+                int animationDuration = 300;
 
                 width = width - (width/100*8);
                 height = height - (height/100*6);
