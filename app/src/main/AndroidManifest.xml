@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".BestScores" android:screenOrientation = "portrait"></activity>
-        <activity android:name=".ThirdActivity" android:screenOrientation = "portrait" />
+        <activity android:name=".ThirdActivity" android:screenOrientation = "portrait" android:windowSoftInputMode="stateHidden" />
         <activity android:name=".SecondActivity" android:screenOrientation = "portrait" />
         <activity android:name=".MainActivity" android:screenOrientation = "portrait">
             <intent-filter>
