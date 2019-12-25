@@ -108,10 +108,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                 width = width - (width/100*8);
                 height = height - (height/100*6);
 
-                FragmentsComm.setWidthHeight(new Dimensions(width, height));
-                Dimensions newDimensions = FragmentsComm.getRandomDimensions(new Dimensions(0,0));
-
-                if(FragmentsComm.getLastFragmentDimensions().size() == 5){
+                if(FragmentsComm.getLastFragmentDimensions() != null){
                     cb1.setX(FragmentsComm.getLastFragmentDimensions().get(0).getWidth());
                     cb1.setY(FragmentsComm.getLastFragmentDimensions().get(0).getHeight());
                     cb2.setX(FragmentsComm.getLastFragmentDimensions().get(1).getWidth());
@@ -123,6 +120,9 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                     cb5.setX(FragmentsComm.getLastFragmentDimensions().get(4).getWidth());
                     cb5.setY(FragmentsComm.getLastFragmentDimensions().get(4).getHeight());
                 }
+
+                FragmentsComm.setWidthHeight(new Dimensions(width, height));
+                Dimensions newDimensions = FragmentsComm.getRandomDimensions(new Dimensions(0,0));
 
                 cb1.animate()
                         .x(newDimensions.getWidth())

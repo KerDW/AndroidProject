@@ -47,6 +47,7 @@ public class FragmentsComm {
     }
 
     public static ArrayList<Dimensions> getLastFragmentDimensions(){
+
         if(!checkboxesPositions.isEmpty()){
             return checkboxesPositions;
         } else {
