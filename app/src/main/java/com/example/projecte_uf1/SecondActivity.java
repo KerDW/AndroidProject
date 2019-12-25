@@ -153,7 +153,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void createTimer(){
-        cdn = new CountDownTimer(30000, 1000) {
+        cdn = new CountDownTimer(60000, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timeLeft = (int) millisUntilFinished;
@@ -199,7 +199,7 @@ public class SecondActivity extends AppCompatActivity {
 
     public void checkInput() {
 
-        if(markCount == 4){
+        if(markCount == 0){
 
             // I had a bug with the emulator where this method would keep firing
             // during testing where markCount condition was 0, this is just in case
