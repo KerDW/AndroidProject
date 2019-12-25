@@ -198,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
         editor.clear();
         editor.apply();
 
+        userSelected = null;
         usersList.clear();
         adapter.notifyDataSetChanged();
 
