@@ -17,22 +17,29 @@ public class FragmentsComm {
         dimensionsSet = true;
     }
 
-    public static boolean areDimensionsSet(){
-        return dimensionsSet;
-    }
-
-    public static Dimensions getRandomDimensions(Dimensions previousDimensions){
+    public static Dimensions getRandomDimensions(){
 
         Random rand = new Random();
 
         float dx;
         float dy;
-        float separation = 10;
+        // 50 is just enough so they don't collide
+        float separation = 50;
+        boolean areDistanced;
 
+        // this prevents checkboxes overlapping between them
         do {
+            areDistanced = true;
             dx = rand.nextFloat() * dimensions.getWidth();
             dy = rand.nextFloat() * dimensions.getHeight();
-        } while((dx >= previousDimensions.getWidth()-separation && dx <= previousDimensions.getWidth()+separation) || (dy >= previousDimensions.getHeight()-separation && dy <= previousDimensions.getHeight()+separation));
+            for (int i = 0; i < checkboxesPositions.size(); i++) {
+                if((dx >= checkboxesPositions.get(i).getWidth()-separation && dx <= checkboxesPositions.get(i).getWidth()+separation) && (dy >= checkboxesPositions.get(i).getHeight()-separation && dy <= checkboxesPositions.get(i).getHeight()+separation)){
+                    Log.e("xd", "xd");
+                    areDistanced = false;
+                    break;
+                }
+            }
+        } while(!areDistanced);
 
         Dimensions newDimensions = new Dimensions(dx, dy);
 

@@ -122,7 +122,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                 }
 
                 FragmentsComm.setWidthHeight(new Dimensions(width, height));
-                Dimensions newDimensions = FragmentsComm.getRandomDimensions(new Dimensions(0,0));
+                Dimensions newDimensions = FragmentsComm.getRandomDimensions();
 
                 cb1.animate()
                         .x(newDimensions.getWidth())
@@ -130,7 +130,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                         .setDuration(animationDuration)
                         .start();
 
-                newDimensions = FragmentsComm.getRandomDimensions(new Dimensions(newDimensions.getWidth(), newDimensions.getHeight()));
+                newDimensions = FragmentsComm.getRandomDimensions();
 
                 cb2.animate()
                         .x(newDimensions.getWidth())
@@ -138,7 +138,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                         .setDuration(animationDuration)
                         .start();
 
-                newDimensions = FragmentsComm.getRandomDimensions(new Dimensions(newDimensions.getWidth(), newDimensions.getHeight()));
+                newDimensions = FragmentsComm.getRandomDimensions();
 
                 cb3.animate()
                         .x(newDimensions.getWidth())
@@ -146,7 +146,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                         .setDuration(animationDuration)
                         .start();
 
-                newDimensions = FragmentsComm.getRandomDimensions(new Dimensions(newDimensions.getWidth(), newDimensions.getHeight()));
+                newDimensions = FragmentsComm.getRandomDimensions();
 
                 cb4.animate()
                         .x(newDimensions.getWidth())
@@ -154,7 +154,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                         .setDuration(animationDuration)
                         .start();
 
-                newDimensions = FragmentsComm.getRandomDimensions(new Dimensions(newDimensions.getWidth(), newDimensions.getHeight()));
+                newDimensions = FragmentsComm.getRandomDimensions();
 
                 cb5.animate()
                         .x(newDimensions.getWidth())
