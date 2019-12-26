@@ -153,8 +153,13 @@ public class ThirdActivity extends AppCompatActivity {
                             realm.copyToRealmOrUpdate(user);
                             realm.commitTransaction();
 
+
                             setResult(RESULT_OK, intent);
                             finish();
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Score saved!",
+                                    Toast.LENGTH_SHORT).show();
 
                             dialog.cancel();
                         }
