@@ -8,13 +8,11 @@ import java.util.Random;
 public class FragmentsComm {
 
     private static Dimensions dimensions;
-    private static boolean dimensionsSet = false;
     private static ArrayList<Dimensions> checkboxesPositions = new ArrayList<>();
     private static int counter = 0;
 
     public static void setWidthHeight(Dimensions d){
         dimensions = d;
-        dimensionsSet = true;
     }
 
     public static Dimensions getRandomDimensions(){
