@@ -92,7 +92,7 @@ public class SecondGameDynamicFragment_3 extends Fragment {
         cb4 = getView().findViewById(R.id.f3cb4);
         cb5 = getView().findViewById(R.id.f3cb5);
 
-        int animationDuration = 300;
+        int animationDuration = Difficulty.getAnimationTime();
 
         cb1.setX(FragmentsComm.getLastFragmentDimensions().get(0).getWidth());
         cb1.setY(FragmentsComm.getLastFragmentDimensions().get(0).getHeight());

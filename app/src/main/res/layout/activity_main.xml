@@ -88,10 +88,10 @@
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/Theme.AppCompat.NoActionBar"
-        app:titleTextColor="@color/primaryTextColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@color/primaryTextColor" />
 
     <Button
         android:id="@+id/resetUsers"
@@ -105,23 +105,23 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <RadioGroup
-        android:layout_width="222dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="334dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginRight="76dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <RadioButton
             android:id="@+id/diffEasy"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="Easy"
             android:checked="true"
             android:tag="easy"
+            android:text="Easy"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/diffMedium" />
 
@@ -141,11 +141,24 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
             android:layout_marginRight="12dp"
-            android:tag="hard"
             android:layout_marginBottom="4dp"
+            android:tag="hard"
             android:text="Hard"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <RadioButton
+            android:id="@+id/diffExtreme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="4dp"
+            android:tag="extreme"
+            android:text="Extreme"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
 
     </RadioGroup>
 

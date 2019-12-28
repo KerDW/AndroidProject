@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     RadioButton easy;
     RadioButton medium;
     RadioButton hard;
+    RadioButton extreme;
     View.OnClickListener diffListener;
 
     public static final int GAME_START = 1;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         easy = findViewById(R.id.diffEasy);
         medium = findViewById(R.id.diffMedium);
         hard = findViewById(R.id.diffHard);
+        extreme = findViewById(R.id.diffExtreme);
 
         setSupportActionBar(toolbar);
 
@@ -89,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
                     case "hard":
                         Difficulty.setDifficulty("hard");
                         break;
+                    case "extreme":
+                        Difficulty.setDifficulty("extreme");
+                        break;
                     default:
                         System.out.println("error");
                         break;
@@ -99,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         easy.setOnClickListener(diffListener);
         medium.setOnClickListener(diffListener);
         hard.setOnClickListener(diffListener);
+        extreme.setOnClickListener(diffListener);
 
         // load megaman gif for the second activity into cache
         Glide.with(this)

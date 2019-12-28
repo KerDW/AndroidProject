@@ -7,11 +7,15 @@ public class Difficulty{
     private static long time;
     private static String difficulty;
     private static int letterNo;
+    private static int animationTime;
 
     public static long getTime() {
         return time;
     }
 
+    public static int getAnimationTime() {
+        return animationTime;
+    }
     public static int getLetterNo() {
         return letterNo;
     }
@@ -22,14 +26,22 @@ public class Difficulty{
             case "easy":
                 time = DifficultyEnum.EASY.getTime();
                 letterNo = DifficultyEnum.EASY.getLetterNo();
+                animationTime = DifficultyEnum.EASY.getAnimationTime();
                 break;
             case "medium":
                 time = DifficultyEnum.MEDIUM.getTime();
                 letterNo = DifficultyEnum.MEDIUM.getLetterNo();
+                animationTime = DifficultyEnum.MEDIUM.getAnimationTime();
                 break;
             case "hard":
                 time = DifficultyEnum.HARD.getTime();
                 letterNo = DifficultyEnum.HARD.getLetterNo();
+                animationTime = DifficultyEnum.HARD.getAnimationTime();
+                break;
+            case "extreme":
+                time = DifficultyEnum.EXTREME.getTime();
+                letterNo = DifficultyEnum.EXTREME.getLetterNo();
+                animationTime = DifficultyEnum.EXTREME.getAnimationTime();
                 break;
             default:
                 System.out.println("error");
@@ -38,20 +50,26 @@ public class Difficulty{
     }
 
     private enum DifficultyEnum {
-        EASY(90000, 3),
-        MEDIUM(60000, 5),
-        HARD(30000, 6);
+        EASY(90000, 3, 200),
+        MEDIUM(60000, 5, 250),
+        HARD(30000, 6, 300),
+        EXTREME(100000, 7, 1000);
 
         private final long time;
         private final int letterNo;
+        private final int animationTime;
 
-        DifficultyEnum(long time, int letterNo){
+        DifficultyEnum(long time, int letterNo, int animationTime){
             this.time = time;
             this.letterNo = letterNo;
+            this.animationTime = animationTime;
+        }
+
+        public int getAnimationTime() {
+            return animationTime;
         }
 
         public long getTime() {
-
             return time;
         }
 
