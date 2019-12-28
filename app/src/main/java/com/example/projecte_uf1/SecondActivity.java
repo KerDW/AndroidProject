@@ -61,7 +61,7 @@ public class SecondActivity extends AppCompatActivity {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 
-        generateRandomChars(6);
+        generateRandomChars();
         progressBarLogic();
         createTimer();
 
@@ -91,14 +91,14 @@ public class SecondActivity extends AppCompatActivity {
                 .into(megamanGif);
     }
 
-    public void generateRandomChars(int letterNo){
+    public void generateRandomChars(){
 
         Random rand = new Random();
         String randomChars = "";
 
         String letters = "abcdefghijklmnopqrstuvxyz";
 
-        for (int i = 0;i < letterNo; i++){
+        for (int i = 0;i < Difficulty.getLetterNo(); i++){
             randomChars += letters.charAt(rand.nextInt(25));
         }
 
@@ -138,7 +138,7 @@ public class SecondActivity extends AppCompatActivity {
                             public void run() {
 
                                 // this method changes view stuff inside
-                                generateRandomChars(6);
+                                generateRandomChars();
                                 inputText.setText("");
 
                             }
@@ -226,7 +226,7 @@ public class SecondActivity extends AppCompatActivity {
             if (inputString.equals(generatedString)) {
                 markCount++;
 
-                generateRandomChars(6);
+                generateRandomChars();
                 marks.setText(markCount + marksString.substring(1));
 
                 progress = 0;
