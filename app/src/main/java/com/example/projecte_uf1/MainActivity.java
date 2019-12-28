@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         // load megaman gif for the second activity into cache
         Glide.with(this)
                 .load("https://gifimage.net/wp-content/uploads/2017/10/megaman-running-gif-1.gif")
-                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .preload();
     }
 
