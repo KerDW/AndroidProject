@@ -121,6 +121,7 @@
             android:layout_marginBottom="4dp"
             android:text="Easy"
             android:checked="true"
+            android:tag="easy"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/diffMedium" />
 
@@ -129,6 +130,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
+            android:tag="medium"
             android:text="Medium"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/diffHard" />
@@ -139,6 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="12dp"
             android:layout_marginRight="12dp"
+            android:tag="hard"
             android:layout_marginBottom="4dp"
             android:text="Hard"
             app:layout_constraintBottom_toBottomOf="parent"

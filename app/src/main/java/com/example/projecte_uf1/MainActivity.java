@@ -7,12 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -36,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     ArrayList<String> usersList;
     ArrayAdapter<String> adapter;
+    RadioButton easy;
+    RadioButton medium;
+    RadioButton hard;
+    View.OnClickListener diffListener;
 
     public static final int GAME_START = 1;
 
@@ -50,9 +56,11 @@ public class MainActivity extends AppCompatActivity {
         users = findViewById(R.id.userSpinner);
         newUser = findViewById(R.id.newUser);
         toolbar = findViewById(R.id.toolbar);
+        easy = findViewById(R.id.diffEasy);
+        medium = findViewById(R.id.diffMedium);
+        hard = findViewById(R.id.diffHard);
 
         setSupportActionBar(toolbar);
-
 
         // Initialize Realm
         Realm.init(this);
@@ -67,6 +75,30 @@ public class MainActivity extends AppCompatActivity {
         editor = sharedPref.edit();
         usersList = new ArrayList<String>();
         spinnerSetup();
+        Difficulty.setDifficulty("easy");
+
+        diffListener = new View.OnClickListener() {
+            public void onClick(View v) {
+                switch(v.getTag().toString()){
+                    case "easy":
+                        Difficulty.setDifficulty("easy");
+                        break;
+                    case "medium":
+                        Difficulty.setDifficulty("medium");
+                        break;
+                    case "hard":
+                        Difficulty.setDifficulty("hard");
+                        break;
+                    default:
+                        System.out.println("error");
+                        break;
+                }
+            }
+        };
+
+        easy.setOnClickListener(diffListener);
+        medium.setOnClickListener(diffListener);
+        hard.setOnClickListener(diffListener);
 
         // load megaman gif for the second activity into cache
         Glide.with(this)
@@ -87,6 +119,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void play(View view) {
+
+        Log.e("xd", ""+Difficulty.getTime());
 
         if(userSelected == null || userSelected.equals("")){
             Toast.makeText(
