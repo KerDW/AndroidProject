@@ -158,7 +158,7 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void createTimer(){
-        cdn = new CountDownTimer(45000, 1000) {
+        cdn = new CountDownTimer(Difficulty.getTime(), 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timeLeft = (int) millisUntilFinished;
