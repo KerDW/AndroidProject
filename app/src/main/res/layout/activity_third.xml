@@ -16,15 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/timeLeftInfo"
-        android:layout_width="261dp"
-        android:layout_height="114dp"
-        android:text="You've got {seconds} seconds left, press start to begin the second game."
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <FrameLayout
         android:id="@+id/fragContainer"
         android:layout_width="411dp"

@@ -162,7 +162,7 @@ public class SecondActivity extends AppCompatActivity {
 
             public void onTick(long millisUntilFinished) {
                 timeLeft = (int) millisUntilFinished;
-                timerTV.setText("Seconds remaining: " + millisUntilFinished / 1000);
+                timerTV.setText("Time left: \n" + millisUntilFinished / 1000);
             }
 
             public void onFinish() {

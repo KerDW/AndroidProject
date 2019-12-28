@@ -26,7 +26,6 @@ public class ThirdActivity extends AppCompatActivity {
     Realm realm;
 
     TextView timerTV;
-    TextView timeLeftInfo;
     Button begin;
 
     Fragment sdf_1;
@@ -48,7 +47,6 @@ public class ThirdActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_third);
 
-        timeLeftInfo = findViewById(R.id.timeLeftInfo);
         timerTV = findViewById(R.id.timerTV2);
         begin = findViewById(R.id.beginGame);
 
@@ -62,7 +60,6 @@ public class ThirdActivity extends AppCompatActivity {
         sdf_2 = new SecondGameDynamicFragment_2();
         sdf_3 = new SecondGameDynamicFragment_3();
 
-        timeLeftInfo.setText("You've got " + timeLeft/1000 + " seconds left, press start to begin the second game.");
         timerTV.setText("Seconds remaining: "+timeLeft/1000);
 
     }
@@ -117,7 +114,6 @@ public class ThirdActivity extends AppCompatActivity {
     public void beginGameTwo(View view) {
 
         createTimer();
-        timeLeftInfo.setVisibility(View.INVISIBLE);
         begin.setVisibility(View.INVISIBLE);
 
     }
