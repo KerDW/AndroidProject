@@ -86,27 +86,33 @@ public class SecondGameDynamicFragment_1 extends Fragment {
 
         fl = getActivity().findViewById(R.id.fl1);
 
+        ArrayList<CheckBox> cbList = new ArrayList<>();
+
         int animationDuration = Difficulty.getAnimationTime();
 
         for (int i = 0; i < Difficulty.getCheckBoxNo(); i++) {
             CheckBox cb = new CheckBox(getContext());
             fl.addView(cb);
-
             CompoundButtonCompat.setButtonTintList(cb, ContextCompat.getColorStateList(getContext(), R.color.colorSecondary));
 
-            if(FragmentsComm.getLastFragmentDimensions() != null && FragmentsComm.getLastFragmentDimensions().size() == Difficulty.getCheckBoxNo()) {
+            if(FragmentsComm.getLastFragmentDimensions() != null) {
                 cb.setX(FragmentsComm.getLastFragmentDimensions().get(i).getWidth());
                 cb.setY(FragmentsComm.getLastFragmentDimensions().get(i).getHeight());
+                Log.e("xd","xd");
             }
+            cbList.add(cb);
+        }
 
+        for (int i = 0; i < cbList.size(); i++) {
             Dimensions d = FragmentsComm.getRandomDimensions();
 
-            cb.animate()
+            cbList.get(i).animate()
                     .x(d.getWidth())
                     .y(d.getHeight())
                     .setDuration(animationDuration)
                     .start();
         }
+        cbList.clear();
     }
 
     /**
