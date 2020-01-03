@@ -6,6 +6,8 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.core.widget.CompoundButtonCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
@@ -20,6 +22,7 @@ import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -38,11 +41,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    CheckBox cb1;
-    CheckBox cb2;
-    CheckBox cb3;
-    CheckBox cb4;
-    CheckBox cb5;
+    FrameLayout fl;
 
     private OnFragmentInteractionListener mListener;
 
@@ -84,88 +83,30 @@ public class SecondGameDynamicFragment_1 extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        cb1 = getView().findViewById(R.id.f1cb1);
-        cb2 = getView().findViewById(R.id.f1cb2);
-        cb3 = getView().findViewById(R.id.f1cb3);
-        cb4 = getView().findViewById(R.id.f1cb4);
-        cb5 = getView().findViewById(R.id.f1cb5);
 
-        final FrameLayout layout = (FrameLayout) getView().findViewById(R.id.fl1);
-        ViewTreeObserver vto = layout.getViewTreeObserver();
-        vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
-                    layout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-                } else {
-                    layout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-                }
+        fl = getActivity().findViewById(R.id.fl1);
 
-                float width  = layout.getMeasuredWidth();
-                float height = layout.getMeasuredHeight();
-                int animationDuration = Difficulty.getAnimationTime();
+        int animationDuration = Difficulty.getAnimationTime();
 
-                width = width - (width/100*8);
-                height = height - (height/100*6);
+        for (int i = 0; i < Difficulty.getCheckBoxNo(); i++) {
+            CheckBox cb = new CheckBox(getContext());
+            fl.addView(cb);
 
-                if(FragmentsComm.getLastFragmentDimensions() != null){
-                    cb1.setX(FragmentsComm.getLastFragmentDimensions().get(0).getWidth());
-                    cb1.setY(FragmentsComm.getLastFragmentDimensions().get(0).getHeight());
-                    cb2.setX(FragmentsComm.getLastFragmentDimensions().get(1).getWidth());
-                    cb2.setY(FragmentsComm.getLastFragmentDimensions().get(1).getHeight());
-                    cb3.setX(FragmentsComm.getLastFragmentDimensions().get(2).getWidth());
-                    cb3.setY(FragmentsComm.getLastFragmentDimensions().get(2).getHeight());
-                    cb4.setX(FragmentsComm.getLastFragmentDimensions().get(3).getWidth());
-                    cb4.setY(FragmentsComm.getLastFragmentDimensions().get(3).getHeight());
-                    cb5.setX(FragmentsComm.getLastFragmentDimensions().get(4).getWidth());
-                    cb5.setY(FragmentsComm.getLastFragmentDimensions().get(4).getHeight());
-                }
+            CompoundButtonCompat.setButtonTintList(cb, ContextCompat.getColorStateList(getContext(), R.color.colorSecondary));
 
-                FragmentsComm.setWidthHeight(new Dimensions(width, height));
-                Dimensions newDimensions = FragmentsComm.getRandomDimensions();
-
-                cb1.animate()
-                        .x(newDimensions.getWidth())
-                        .y(newDimensions.getHeight())
-                        .setDuration(animationDuration)
-                        .start();
-
-                newDimensions = FragmentsComm.getRandomDimensions();
-
-                cb2.animate()
-                        .x(newDimensions.getWidth())
-                        .y(newDimensions.getHeight())
-                        .setDuration(animationDuration)
-                        .start();
-
-                newDimensions = FragmentsComm.getRandomDimensions();
-
-                cb3.animate()
-                        .x(newDimensions.getWidth())
-                        .y(newDimensions.getHeight())
-                        .setDuration(animationDuration)
-                        .start();
-
-                newDimensions = FragmentsComm.getRandomDimensions();
-
-                cb4.animate()
-                        .x(newDimensions.getWidth())
-                        .y(newDimensions.getHeight())
-                        .setDuration(animationDuration)
-                        .start();
-
-                newDimensions = FragmentsComm.getRandomDimensions();
-
-                cb5.animate()
-                        .x(newDimensions.getWidth())
-                        .y(newDimensions.getHeight())
-                        .setDuration(animationDuration)
-                        .start();
-
-
+            if(FragmentsComm.getLastFragmentDimensions() != null && FragmentsComm.getLastFragmentDimensions().size() == Difficulty.getCheckBoxNo()) {
+                cb.setX(FragmentsComm.getLastFragmentDimensions().get(i).getWidth());
+                cb.setY(FragmentsComm.getLastFragmentDimensions().get(i).getHeight());
             }
-        });
 
+            Dimensions d = FragmentsComm.getRandomDimensions();
+
+            cb.animate()
+                    .x(d.getWidth())
+                    .y(d.getHeight())
+                    .setDuration(animationDuration)
+                    .start();
+        }
     }
 
     /**
