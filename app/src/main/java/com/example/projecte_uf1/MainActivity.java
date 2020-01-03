@@ -126,8 +126,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void play(View view) {
 
-        Log.e("xd", ""+Difficulty.getTime());
-
         if(userSelected == null || userSelected.equals("")){
             Toast.makeText(
             getApplicationContext(),
