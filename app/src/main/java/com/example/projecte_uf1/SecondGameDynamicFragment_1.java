@@ -41,7 +41,8 @@ public class SecondGameDynamicFragment_1 extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    FrameLayout fl;
+    private FrameLayout fl;
+    private ArrayList<CheckBox> cbList = new ArrayList<>();
 
     private OnFragmentInteractionListener mListener;
 
@@ -86,14 +87,15 @@ public class SecondGameDynamicFragment_1 extends Fragment {
 
         fl = getActivity().findViewById(R.id.fl1);
 
+        // since the view loads after the initial code this waits until the view is generated to be able to get the measurements
+        // and then animates the checkboxes, animating the checkboxes for the first time outside of this would crash it
         if(FragmentsComm.getDimensions() == null) {
-            Log.e("xd", "here");
             ViewTreeObserver observer = fl.getViewTreeObserver();
             observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 
                 @Override
                 public void onGlobalLayout() {
-                    // TODO Auto-generated method stub
+                    // this is what works best after some testing
                     float layout_width = fl.getWidth() - (fl.getWidth() / 100 * 8);
                     float layout_height = fl.getHeight() - (fl.getHeight() / 100 * 6);
 
@@ -109,15 +111,27 @@ public class SecondGameDynamicFragment_1 extends Fragment {
     }
 
     public void checkboxesMotion(){
-        ArrayList<CheckBox> cbList = new ArrayList<>();
 
         int animationDuration = Difficulty.getAnimationTime();
 
         for (int i = 0; i < Difficulty.getCheckBoxNo(); i++) {
             CheckBox cb = new CheckBox(getContext());
+            // this sets the checkbox width and height to wrap_content so its size is the space it actually takes up
+            cb.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
+            // add checkbox to the frame layout otherwise it won't show
             fl.addView(cb);
+            // set color
             CompoundButtonCompat.setButtonTintList(cb, ContextCompat.getColorStateList(getContext(), R.color.colorSecondary));
 
+
+            cb.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ((ThirdActivity)getActivity()).checkBoxes(v);
+                }
+            });
+
+            // except for the first checkboxes this will get the positions where the previous fragment checkbox ended in and set this new one there
             if(FragmentsComm.getLastFragmentDimensions() != null) {
                 cb.setX(FragmentsComm.getLastFragmentDimensions().get(i).getWidth());
                 cb.setY(FragmentsComm.getLastFragmentDimensions().get(i).getHeight());
@@ -135,6 +149,10 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                     .start();
         }
         cbList.clear();
+    }
+
+    public void moveCheckboxes(){
+
     }
 
     /**

@@ -130,7 +130,7 @@ public class ThirdActivity extends AppCompatActivity {
         }
 
 
-        if(checks == 15){
+        if(checks == Difficulty.getCheckBoxNo()*3){
             cdn.cancel();
 
             AlertDialog.Builder ad = new AlertDialog.Builder(this);

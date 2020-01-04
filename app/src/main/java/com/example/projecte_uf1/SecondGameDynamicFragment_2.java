@@ -95,6 +95,7 @@ public class SecondGameDynamicFragment_2 extends Fragment {
 
         for (int i = 0; i < Difficulty.getCheckBoxNo(); i++) {
             CheckBox cb = new CheckBox(getContext());
+            cb.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
             fl.addView(cb);
             CompoundButtonCompat.setButtonTintList(cb, ContextCompat.getColorStateList(getContext(), R.color.green));
 

@@ -1,8 +1,6 @@
 package com.example.projecte_uf1;
 
-import android.content.Context;
 import android.util.Log;
-import android.widget.CheckBox;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -36,7 +34,7 @@ public class FragmentsComm {
         do {
             areDistanced = true;
             dx = rand.nextFloat() * dimensions.getWidth();
-            dy = rand.nextFloat() * dimensions.getHeight() + -(dimensions.getHeight()/2);
+            dy = rand.nextFloat() * dimensions.getHeight();// + -(dimensions.getHeight()/2); this was correct before setting wrap_content on the checkboxes
             for (int i = 0; i < checkboxesPositions.size(); i++) {
                 if((dx >= checkboxesPositions.get(i).getWidth()-separation && dx <= checkboxesPositions.get(i).getWidth()+separation) && (dy >= checkboxesPositions.get(i).getHeight()-separation && dy <= checkboxesPositions.get(i).getHeight()+separation)){
                     Log.e("xd", "collision avoided");
