@@ -100,6 +100,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                     float layout_height = fl.getHeight() - (fl.getHeight() / 100 * 6);
 
                     FragmentsComm.setDimensions(new Dimensions(layout_width, layout_height));
+                    createCheckBoxes();
                     checkboxesMotion();
                     fl.getViewTreeObserver().removeGlobalOnLayoutListener(
                             this);
@@ -110,19 +111,55 @@ public class SecondGameDynamicFragment_1 extends Fragment {
         }
     }
 
-    public void checkboxesMotion(){
+//    public void checkboxesMotion(){
+//
+//        int animationDuration = Difficulty.getAnimationTime();
+//
+//        for (int i = 0; i < Difficulty.getCheckBoxNo(); i++) {
+//            CheckBox cb = new CheckBox(getContext());
+//            // this sets the checkbox width and height to wrap_content so its size is the space it actually takes up
+//            cb.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
+//            // add checkbox to the frame layout otherwise it won't show
+//            fl.addView(cb);
+//            // set color
+//            CompoundButtonCompat.setButtonTintList(cb, ContextCompat.getColorStateList(getContext(), R.color.colorSecondary));
+//
+//
+//            cb.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    ((ThirdActivity)getActivity()).checkBoxes(v);
+//                }
+//            });
+//
+//            // except for the first checkboxes this will get the positions where the previous fragment checkbox ended in and set this new one there
+//            if(FragmentsComm.getLastFragmentDimensions() != null) {
+//                cb.setX(FragmentsComm.getLastFragmentDimensions().get(i).getWidth());
+//                cb.setY(FragmentsComm.getLastFragmentDimensions().get(i).getHeight());
+//            }
+//            cbList.add(cb);
+//        }
+//
+//        for (int i = 0; i < cbList.size(); i++) {
+//            Dimensions d = FragmentsComm.getRandomDimensions();
+//
+//            cbList.get(i).animate()
+//                    .x(d.getWidth())
+//                    .y(d.getHeight())
+//                    .setDuration(animationDuration)
+//                    .start();
+//        }
+//        cbList.clear();
+//    }
 
-        int animationDuration = Difficulty.getAnimationTime();
+    private void createCheckBoxes(){
 
         for (int i = 0; i < Difficulty.getCheckBoxNo(); i++) {
             CheckBox cb = new CheckBox(getContext());
             // this sets the checkbox width and height to wrap_content so its size is the space it actually takes up
             cb.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT));
-            // add checkbox to the frame layout otherwise it won't show
-            fl.addView(cb);
             // set color
             CompoundButtonCompat.setButtonTintList(cb, ContextCompat.getColorStateList(getContext(), R.color.colorSecondary));
-
 
             cb.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -131,28 +168,46 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                 }
             });
 
-            // except for the first checkboxes this will get the positions where the previous fragment checkbox ended in and set this new one there
-            if(FragmentsComm.getLastFragmentDimensions() != null) {
-                cb.setX(FragmentsComm.getLastFragmentDimensions().get(i).getWidth());
-                cb.setY(FragmentsComm.getLastFragmentDimensions().get(i).getHeight());
-            }
             cbList.add(cb);
+        }
+    }
+
+    private void checkboxesMotion(){
+
+        int animationDuration = Difficulty.getAnimationTime();
+
+        // I wanted to do this all in one for but it doesn't work properly when setting the positions and animating in the same loop
+
+        for (int i = 0; i < cbList.size(); i++) {
+            // add checkbox to the frame layout otherwise it won't show
+            fl.addView(cbList.get(i));
+
+            // except for the first checkboxes this will get the positions where the previous fragment checkbox ended in and set this new one there
+            if (FragmentsComm.getLastFragmentDimensions() != null) {
+                cbList.get(i).setX(FragmentsComm.getLastFragmentDimensions().get(i).getWidth());
+                cbList.get(i).setY(FragmentsComm.getLastFragmentDimensions().get(i).getHeight());
+            }
         }
 
         for (int i = 0; i < cbList.size(); i++) {
+            // get new dimensions accounted for collision and animate
             Dimensions d = FragmentsComm.getRandomDimensions();
-
             cbList.get(i).animate()
                     .x(d.getWidth())
                     .y(d.getHeight())
                     .setDuration(animationDuration)
                     .start();
         }
-        cbList.clear();
+
     }
 
-    public void moveCheckboxes(){
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // detach checkboxes from this frame layout, every time the fragment is created
+        // the frame layout is technically different so I need to attach the views again
+        // to do this I need them to not have any parent otherwise it won't let me
+        fl.removeAllViews();
     }
 
     /**
