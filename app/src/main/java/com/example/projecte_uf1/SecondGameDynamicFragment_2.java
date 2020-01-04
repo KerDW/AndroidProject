@@ -109,6 +109,9 @@ public class SecondGameDynamicFragment_2 extends Fragment {
             // set color
             CompoundButtonCompat.setButtonTintList(cb, ContextCompat.getColorStateList(getContext(), R.color.green));
 
+            // set unique tag to identify it on the activity
+            cb.setTag("f2cb"+i);
+
             cb.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

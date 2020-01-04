@@ -32,7 +32,7 @@ public class ThirdActivity extends AppCompatActivity {
     Fragment sdf_2;
     Fragment sdf_3;
 
-    ArrayList<Integer> cbs = new ArrayList<>();
+    ArrayList<String> cbs = new ArrayList<>();
     int checks = 0;
 
     CountDownTimer cdn;
@@ -120,15 +120,14 @@ public class ThirdActivity extends AppCompatActivity {
 
     public void checkBoxes(View view) {
 
-        if(!cbs.contains(view.getId())){
-            cbs.add(view.getId());
+        if(!cbs.contains(view.getTag().toString())){
+            cbs.add(view.getTag().toString());
             checks++;
         } else {
             // got to get an Integer object otherwise the arraylist thinks it's an index and crashes
-            cbs.remove(Integer.valueOf(view.getId()));
+            cbs.remove(view.getTag().toString());
             checks--;
         }
-
 
         if(checks == Difficulty.getCheckBoxNo()*3){
             cdn.cancel();
