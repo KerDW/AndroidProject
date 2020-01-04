@@ -43,6 +43,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
 
     private FrameLayout fl;
     private ArrayList<CheckBox> cbList = new ArrayList<>();
+    private boolean checkboxesCreated;
 
     private OnFragmentInteractionListener mListener;
 
@@ -107,7 +108,12 @@ public class SecondGameDynamicFragment_1 extends Fragment {
                 }
             });
         } else {
-            checkboxesMotion();
+            if(checkboxesCreated){
+                checkboxesMotion();
+            } else {
+                createCheckBoxes();
+                checkboxesMotion();
+            }
         }
     }
 
@@ -132,6 +138,7 @@ public class SecondGameDynamicFragment_1 extends Fragment {
 
             cbList.add(cb);
         }
+        checkboxesCreated = true;
     }
 
     private void checkboxesMotion(){
