@@ -86,6 +86,29 @@ public class SecondGameDynamicFragment_1 extends Fragment {
 
         fl = getActivity().findViewById(R.id.fl1);
 
+        if(FragmentsComm.getDimensions() == null) {
+            Log.e("xd", "here");
+            ViewTreeObserver observer = fl.getViewTreeObserver();
+            observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+
+                @Override
+                public void onGlobalLayout() {
+                    // TODO Auto-generated method stub
+                    float layout_width = fl.getWidth() - (fl.getWidth() / 100 * 8);
+                    float layout_height = fl.getHeight() - (fl.getHeight() / 100 * 6);
+
+                    FragmentsComm.setDimensions(new Dimensions(layout_width, layout_height));
+                    checkboxesMotion();
+                    fl.getViewTreeObserver().removeGlobalOnLayoutListener(
+                            this);
+                }
+            });
+        } else {
+            checkboxesMotion();
+        }
+    }
+
+    public void checkboxesMotion(){
         ArrayList<CheckBox> cbList = new ArrayList<>();
 
         int animationDuration = Difficulty.getAnimationTime();
@@ -98,7 +121,6 @@ public class SecondGameDynamicFragment_1 extends Fragment {
             if(FragmentsComm.getLastFragmentDimensions() != null) {
                 cb.setX(FragmentsComm.getLastFragmentDimensions().get(i).getWidth());
                 cb.setY(FragmentsComm.getLastFragmentDimensions().get(i).getHeight());
-                Log.e("xd","xd");
             }
             cbList.add(cb);
         }

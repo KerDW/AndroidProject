@@ -9,11 +9,18 @@ import java.util.Random;
 
 public class FragmentsComm {
 
-    // I got these values using a viewtreeobserver on the fragments to get measurements, then adjusted them
-    private static Dimensions dimensions = new Dimensions(992.68f, 1515.28f);
+    private static Dimensions dimensions;
 
     private static ArrayList<Dimensions> checkboxesPositions = new ArrayList<>();
     private static int counter = 0;
+
+    public static void setDimensions(Dimensions dimensions) {
+        FragmentsComm.dimensions = dimensions;
+    }
+
+    public static Dimensions getDimensions() {
+        return dimensions;
+    }
 
     public static Dimensions getRandomDimensions(){
 
@@ -29,7 +36,7 @@ public class FragmentsComm {
         do {
             areDistanced = true;
             dx = rand.nextFloat() * dimensions.getWidth();
-            dy = rand.nextFloat() * dimensions.getHeight();
+            dy = rand.nextFloat() * dimensions.getHeight() + -(dimensions.getHeight()/2);
             for (int i = 0; i < checkboxesPositions.size(); i++) {
                 if((dx >= checkboxesPositions.get(i).getWidth()-separation && dx <= checkboxesPositions.get(i).getWidth()+separation) && (dy >= checkboxesPositions.get(i).getHeight()-separation && dy <= checkboxesPositions.get(i).getHeight()+separation)){
                     Log.e("xd", "collision avoided");

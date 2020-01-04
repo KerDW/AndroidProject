@@ -101,7 +101,6 @@ public class SecondGameDynamicFragment_2 extends Fragment {
             if(FragmentsComm.getLastFragmentDimensions() != null) {
                 cb.setX(FragmentsComm.getLastFragmentDimensions().get(i).getWidth());
                 cb.setY(FragmentsComm.getLastFragmentDimensions().get(i).getHeight());
-                Log.e("xd","xd");
             }
             cbList.add(cb);
         }
