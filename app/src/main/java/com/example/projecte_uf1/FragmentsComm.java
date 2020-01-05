@@ -8,11 +8,24 @@ import java.util.Random;
 public class FragmentsComm {
 
     private static Dimensions dimensions;
+
     private static ArrayList<Dimensions> checkboxesPositions = new ArrayList<>();
     private static int counter = 0;
 
-    public static void setWidthHeight(Dimensions d){
-        dimensions = d;
+    public static void setDimensions(Dimensions dimensions) {
+        FragmentsComm.dimensions = dimensions;
+    }
+
+    public static void setCheckboxesPositions(ArrayList<Dimensions> checkboxesPositions) {
+        FragmentsComm.checkboxesPositions = checkboxesPositions;
+    }
+
+    public static void setCounter(int counter) {
+        FragmentsComm.counter = counter;
+    }
+
+    public static Dimensions getDimensions() {
+        return dimensions;
     }
 
     public static Dimensions getRandomDimensions(){
@@ -29,10 +42,10 @@ public class FragmentsComm {
         do {
             areDistanced = true;
             dx = rand.nextFloat() * dimensions.getWidth();
-            dy = rand.nextFloat() * dimensions.getHeight();
+            dy = rand.nextFloat() * dimensions.getHeight();// + -(dimensions.getHeight()/2); this was correct before setting wrap_content on the checkboxes
             for (int i = 0; i < checkboxesPositions.size(); i++) {
                 if((dx >= checkboxesPositions.get(i).getWidth()-separation && dx <= checkboxesPositions.get(i).getWidth()+separation) && (dy >= checkboxesPositions.get(i).getHeight()-separation && dy <= checkboxesPositions.get(i).getHeight()+separation)){
-                    Log.e("xd", "xd");
+                    Log.e("xd", "collision avoided");
                     areDistanced = false;
                     break;
                 }
@@ -41,7 +54,7 @@ public class FragmentsComm {
 
         Dimensions newDimensions = new Dimensions(dx, dy);
 
-        if(counter == 5){
+        if(counter == Difficulty.getCheckBoxNo()){
             counter = 0;
             checkboxesPositions.clear();
         }

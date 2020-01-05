@@ -4,48 +4,4 @@
     android:id="@+id/fl1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondGameDynamicFragment_1">
-
-    <CheckBox
-        android:id="@+id/f1cb1"
-        android:layout_width="wrap_content"
-        android:onClick="checkBoxes"
-        tools:ignore="OnClick"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/colorSecondary"
-         />
-
-    <CheckBox
-        android:id="@+id/f1cb2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="checkBoxes"
-        tools:ignore="OnClick"
-        android:buttonTint="@color/colorSecondary" />
-
-    <CheckBox
-        android:id="@+id/f1cb3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="checkBoxes"
-        tools:ignore="OnClick"
-        android:buttonTint="@color/colorSecondary" />
-
-    <CheckBox
-        android:id="@+id/f1cb4"
-        android:layout_width="wrap_content"
-        android:onClick="checkBoxes"
-        tools:ignore="OnClick"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/colorSecondary" />
-
-    <CheckBox
-        android:id="@+id/f1cb5"
-        android:onClick="checkBoxes"
-        tools:ignore="OnClick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:buttonTint="@color/colorSecondary" />
-
-
-</FrameLayout>
+    tools:context=".SecondGameDynamicFragment_1"/>
