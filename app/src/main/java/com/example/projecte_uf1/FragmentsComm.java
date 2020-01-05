@@ -16,6 +16,14 @@ public class FragmentsComm {
         FragmentsComm.dimensions = dimensions;
     }
 
+    public static void setCheckboxesPositions(ArrayList<Dimensions> checkboxesPositions) {
+        FragmentsComm.checkboxesPositions = checkboxesPositions;
+    }
+
+    public static void setCounter(int counter) {
+        FragmentsComm.counter = counter;
+    }
+
     public static Dimensions getDimensions() {
         return dimensions;
     }

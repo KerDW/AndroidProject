@@ -60,6 +60,10 @@ public class ThirdActivity extends AppCompatActivity {
         sdf_2 = new SecondGameDynamicFragment_2();
         sdf_3 = new SecondGameDynamicFragment_3();
 
+        // reset counter and array for the next game
+        FragmentsComm.setCounter(0);
+        FragmentsComm.setCheckboxesPositions(new ArrayList<Dimensions>());
+
         timerTV.setText("Seconds remaining: "+timeLeft/1000);
 
     }
