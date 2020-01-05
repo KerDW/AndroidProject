@@ -58,8 +58,8 @@ public class Difficulty{
     }
 
     private enum DifficultyEnum {
-        EASY(90000, 3, 200, 2),
-        MEDIUM(60000, 5, 250, 4),
+        EASY(50000, 3, 200, 2),
+        MEDIUM(40000, 5, 250, 4),
         HARD(30000, 6, 300, 5),
         EXTREME(100000, 7, 1000, 7);
 
